@@ -1,0 +1,15 @@
+.footer-bottom{
+    display: flex;
+    background-color: #C8F560;
+    height: 40px;
+    color: #081A36;
+    align-items: center;
+    font-weight: bold;
+    font-size: 14px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.copyright{
+    font-weight: normal;
+}
