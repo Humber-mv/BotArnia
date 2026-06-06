@@ -1,5 +1,5 @@
 /*CSS DEL NAVBAR*/
-.n{
+.nav-principal{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +57,7 @@ nav .container {
 .logo-text{
     font-size: 16px;
     font-weight: bold;
-    
+    font-family: 'Montserrat', sans-serif; ;
 }
 .logo-bot{
     color: white;

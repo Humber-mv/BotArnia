@@ -1,7 +1,7 @@
 .footer-bottom{
     display: flex;
     background-color: #C8F560;
-    height: 40px;
+    height: 50px;
     color: #081A36;
     align-items: center;
     font-weight: bold;
@@ -13,3 +13,122 @@
 .copyright{
     font-weight: normal;
 }
+
+.footer-cta{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 48px 0;
+}
+
+.cta-texto{
+    line-height: 1.5;
+}
+.cta-texto p{
+    color: #C8F560;
+    font-size: 17px;
+}
+
+.cta-texto h2{
+    font-weight: bolder;
+}
+
+.cta-texto span{
+    color: #C8F560;
+}
+
+.whatsapp-button{
+    background: linear-gradient(90deg,rgba(255, 0, 128, 1) 13%, rgba(245, 116, 169, 1) 92%);;
+    padding: 12px 20px;
+    border-radius: 35px;
+    font-size: 14px;
+    font-weight:500;
+    color: #fff;
+    transition: filter 0.3s ease, transform 0.2s ease;
+}
+.whatsapp-button:hover {
+    filter: brightness(0.85);
+    transform: scale(1.03);
+}
+
+.footer-body{
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.footer-body a{
+    transition: color 0.3s;
+}
+.footer-body li a:hover{
+    color: #C8F560;
+}
+
+.footer-body h3{
+    font-size: 16.5px;
+    color: #F5F0E8; 
+    margin-bottom: 12px;
+}
+.footer-body a,
+.footer-body p,
+.footer-body li{
+    color: rgba(245, 240, 232, 0.6);
+    font-weight: 400;
+    line-height: 2;
+}
+.footer-body p{
+    line-height: 1.5;
+}
+
+.footer-info li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-social ul{
+    display: flex;
+    gap: 2rem;
+    font-size: 17px;
+}
+
+.footer-social .insta:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.footer-social .face:hover {
+    color: #1877F2;
+}
+.footer-social .tiktok:hover {
+    color: #69C9D0;
+    text-shadow: 2px 0px 0px #EE1D52;
+}
+.footer-brand{
+    display: flex;
+    gap: 0.75rem;
+}
+.footer-brand svg{
+    width: 28px;
+    height: 28px;
+    background-color: #C8F560;
+    border-radius: 3.5px;
+    padding: 3px;
+    color: #081A36;
+}
+.logo-text{
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 4px;
+}
+.logo-bot{
+    color: white;
+}
+.logo-arnia{
+    color: #C8F560;
+}
+
+
