@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(8, 26, 54, 0.75);
+    background: rgba(6, 20, 42, 0.75);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     position: fixed;
@@ -36,7 +36,7 @@ nav .container {
 }
 
 .nav-links li a:hover{
-    color: #C8F560;
+    color: #97f560;
 }
 
 
@@ -49,7 +49,7 @@ nav .container {
 .nav-logo svg{
     width: 28px;
     height: 28px;
-    background-color: #C8F560;
+    background-color: #97f560;
     border-radius: 3.5px;
     padding: 3px;
     color: #081A36;
@@ -63,5 +63,5 @@ nav .container {
     color: white;
 }
 .logo-arnia{
-    color: #C8F560;
+    color: #97f560;
 }
