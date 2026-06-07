@@ -1,6 +1,6 @@
 .footer-bottom{
     display: flex;
-    background-color: #97f560;
+    background-color: #91ff3d;
     height: 50px;
     color: #081A36;
     align-items: center;
@@ -25,14 +25,14 @@
     line-height: 1.5;
 }
 .cta-texto p{
-    color: #97f560;
+    color: #91ff3d;
     font-size: 17px;
 }
 .cta-texto h2{
     font-weight: bolder;
 }
 .cta-texto span{
-    color: #97f560;
+    color: #91ff3d;
 }
 
 .whatsapp-button{
@@ -60,7 +60,7 @@
     transition: color 0.3s;
 }
 .footer-body li a:hover{
-    color: #97f560;
+    color: #91ff3d;
 }
 
 .footer-body h3{
@@ -111,7 +111,7 @@
 .footer-brand svg{
     width: 28px;
     height: 28px;
-    background-color: #97f560;
+    background-color: #91ff3d;
     border-radius: 3.5px;
     padding: 3px;
     color: #081A36;
@@ -127,7 +127,7 @@
     color: white;
 }
 .logo-arnia{
-    color: #97f560;
+    color: #91ff3d;
 }
 
 

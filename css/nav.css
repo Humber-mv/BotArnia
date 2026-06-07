@@ -34,7 +34,7 @@ nav .container {
     transition: color 0.3s;
 }
 .nav-links li a:hover{
-    color: #97f560;
+    color: #91ff3d;
 }
 
 /*CSS DEL LOGO*/
@@ -46,7 +46,7 @@ nav .container {
 .nav-logo svg{
     width: 28px;
     height: 28px;
-    background-color: #97f560;
+    background-color: #91ff3d;
     border-radius: 3.5px;
     padding: 3px;
     color: #081A36;
@@ -61,5 +61,5 @@ nav .container {
     color: white;
 }
 .logo-arnia{
-    color: #97f560;
+    color: #91ff3d;
 }

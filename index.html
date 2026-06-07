@@ -100,13 +100,94 @@
                     </article>
                 </div>
             </section>
-            <section class="hola">
-                hhhhbhbuh
+
+
+            <section class="problems-section">
+                <div class="problems-left">
+                    <h2>Miles de cultivos siguen manejándose <span>en papel</span></h2>
+                    <p>La falta de digitalización sigue generando pérdidad de tiempo, dinero y oportunidades.</p>
+                    <div class="problems-stat">
+                        <!-- El círculo animado necesita su propio contenedor -->
+                        <div class="stat-circulo">
+                            <svg viewBox="0 0 100 100">
+                                <!-- Círculo de fondo -->
+                                <circle cx="50" cy="50" r="40" stroke="rgba(255,255,255,0.1)" stroke-width="6" fill="none"/>
+                                <!-- Círculo animado -->
+                                <circle class="circulo-progreso" cx="50" cy="50" r="40" stroke="#E8A838" stroke-width="6" fill="none"stroke-linecap="round"/>
+                            </svg>
+                            <span class="stat-numero">87%</span>
+                        </div>
+                        <div class="stat-info">
+                            <p class="stat-text">de pequeños agricultores en Costa Rica no usan herramientas digitales</p>
+                            <small>Fuente: MAG 2023</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="problems-cards">
+                    <div class="problem-card watering-card">
+                        <svg viewBox="0 0 24 24" fill="none" class="icon-stroke">
+                            <path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 6V12"/>
+                            <path d="M16.24 16.24L12 12"/>
+                        </svg>
+                        <div class="problem-card-text">
+                            <h4>Sin alertas de riego</h4>
+                            <p>El agricultor depende de su memoria. Nadie avisa cuándo actuar</p>
+                        </div>
+                    </div>
+                    <div class="problem-card plague-card">
+                        <svg viewBox="0 0 24 24" class="icon-stroke">
+                            <path d="M7 14.3333C7 13.0872 7 12.4641 7.26795 12C7.44349 11.696 7.69596 11.4435 8 11.2679C8.4641 11 9.08718 11 10.3333 11H13.6667C14.9128 11 15.5359 11 16 11.2679C16.304 11.4435 16.5565 11.696 16.7321 12C17 12.4641 17 13.0872 17 14.3333V16C17 16.9293 17 17.394 16.9231 17.7804C16.6075 19.3671 15.3671 20.6075 13.7804 20.9231C13.394 21 12.9293 21 12 21V21C11.0707 21 10.606 21 10.2196 20.9231C8.63288 20.6075 7.39249 19.3671 7.07686 17.7804C7 17.394 7 16.9293 7 16V14.3333Z"/>
+                            <path d="M9 9C9 8.06812 9 7.60218 9.15224 7.23463C9.35523 6.74458 9.74458 6.35523 10.2346 6.15224C10.6022 6 11.0681 6 12 6V6C12.9319 6 13.3978 6 13.7654 6.15224C14.2554 6.35523 14.6448 6.74458 14.8478 7.23463C15 7.60218 15 8.06812 15 9V11H9V9Z"/>
+                            <path d="M12 11V15"/>
+                            <path d="M15 3L13 6"/>
+                            <path d="M9 3L11 6"/>
+                            <path d="M7 16H2"/>
+                            <path d="M22 16H17"/>
+                            <path d="M20 9V10C20 11.6569 18.6569 13 17 13V13"/>
+                            <path d="M20 22V22C20 20.3431 18.6569 19 17 19V19"/>
+                            <path d="M4 9V10C4 11.6569 5.34315 13 7 13V13"/>
+                            <path d="M4 22V22C4 20.3431 5.34315 19 7 19V19"/>
+                        </svg>
+                        <div class="problem-card-text">
+                            <h4>Plagas tarde</h4>
+                            <p>Sin seguimiento, las plagas se detectan cuando ya es demasiado tarde.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card history-card">
+                        <svg viewBox="-3.5 0 32 32" class="icon-fill">
+                            <g id="icomoon-ignore"></g>
+                            <path d="M6.294 14.164h12.588v1.049h-12.588v-1.049z"></path>
+                            <path d="M6.294 18.36h12.588v1.049h-12.588v-1.049z"></path>
+                            <path d="M6.294 22.557h8.392v1.049h-8.392v-1.049z"></path>
+                            <path d="M15.688 3.674c-0.25-1.488-1.541-2.623-3.1-2.623s-2.85 1.135-3.1 2.623h-9.489v27.275h25.176v-27.275h-9.488zM10.49 6.082v-1.884c0-1.157 0.941-2.098 2.098-2.098s2.098 0.941 2.098 2.098v1.884l0.531 0.302c1.030 0.586 1.82 1.477 2.273 2.535h-9.803c0.453-1.058 1.243-1.949 2.273-2.535l0.53-0.302zM24.128 29.9h-23.078v-25.177h8.392v0.749c-1.638 0.932-2.824 2.566-3.147 4.496h12.588c-0.322-1.93-1.509-3.563-3.147-4.496v-0.749h8.392v25.177z"></path>
+                        </svg>
+                        <div class="problem-card-text">
+                            <h4>Sin historial</h4>
+                            <p>Imposible aprender de errores o planear mejor la próxima temporada.</p>
+                        </div>
+                    </div>
+                    <div class="problem-card lost-card">
+                        <svg viewBox="0 0 481 481" class="icon-fill">
+                            <g><g>
+                                <path d="M256.7,301.9h-27.5c-10,0-18.1-8.1-18.1-18.1s8.1-18.1,18.1-18.1h48.4c6.6,0,12-5.4,12-12c0-6.6-5.4-12-12-12h-22.7V225c0-6.6-5.4-12-12-12s-12,5.4-12,12v16.7h-1.7c-23.2,0-42.1,18.9-42.1,42.1s18.9,42.1,42.1,42.1h27.5c10,0,18.1,8.1,18.1,18.1s-8.1,18.1-18.1,18.1h-49.3c-6.6,0-12,5.4-12,12c0,6.6,5.4,12,12,12H231v17.1c0,6.6,5.4,12,12,12c6.6,0,12-5.4,12-12v-17.1h2c0.1,0,0.2,0,0.3,0c23-0.3,41.5-19.1,41.5-42.1C298.8,320.8,279.9,301.9,256.7,301.9z"/>
+                                <path d="M423.3,274.7c-12.6-29-30-57.1-52-83.4c-26.6-32-53.1-53.4-66.6-63.3l51-94.6c2.5-4.7,1.7-10.5-2.2-14.2C340.3,6.3,326.3,0,310.7,0c-14.3,0-27.4,5.4-38.8,10.2c-9,3.7-17.5,7.3-24.4,7.3c-2.1,0-3.9-0.3-5.7-1C218,7.8,199.7,2.4,182,2.4c-22.4,0-41.5,9-60.2,28.2c-3.9,4-4.5,10.3-1.4,15l55,83.1c-13.6,10.1-39.6,31.3-65.7,62.6c-21.9,26.3-39.4,54.4-52,83.4c-15.8,36.5-23.8,74.6-23.8,113.2c0,51.3,41.8,93.1,93.1,93.1h227c51.3,0,93.1-41.8,93.1-93.1C447.1,349.3,439.1,311.2,423.3,274.7z M146,40.6c11.6-10,22.7-14.4,36-14.4c14.2,0,30.2,4.8,51.5,12.7c4.4,1.6,9.1,2.4,13.9,2.4c11.7,0,22.9-4.6,33.6-9.1c10.3-4.3,20.1-8.4,29.6-8.4c4.6,0,11.1,0.8,19.3,6.6l-48,89.2h-83.6L146,40.6z M354,457H127c-38.1,0-69.1-31-69.1-69.1c0-64.1,23.5-124.9,69.7-180.7c29.2-35.3,58.9-57.2,67.9-63.6h89.8c9.1,6.3,38.7,28.3,67.9,63.6c46.3,55.8,69.7,116.5,69.7,180.7C423.1,426,392.1,457,354,457z"/>
+                            </g></g>
+                        </svg>
+                        <div class="problem-card-text">
+                            <h4>Pérdidas evitables</h4>
+                            <p>Cosechas perdidas por problemas que pudieron detectarse a tiempo.</p>
+                        </div>
+                    </div>
+                </div>
             </section>
+
+
         </div>
     </main>
     
     <div id="footer-container"></div>
     <script src="js/nav-footer.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>
