@@ -1,16 +1,18 @@
+/*CSS DE LA SECCIÓN DEL HERO*/
 .hero-section{
-    margin-top: 45px;
     display: flex;
     flex-direction: column;
     gap: 3rem;
-    overflow: hidden;
-    position: relative;
+    min-height: 95vh;
+    justify-content: center;
 }
+
 .hero-content{
     display: flex;
     flex-direction: column;
     gap: 1.7rem;
 }
+
 .hero-links{
     display: flex;
     gap: 2rem;
@@ -23,6 +25,7 @@
     align-items: center;
     transition: all 0.3s ease;
 }
+
 .btn-primary{
     background-color: #97f560;
     color: #081A36;
@@ -33,6 +36,7 @@
     background-color: #97f560;
     filter: brightness(0.85);
 }
+
 .btn-secundary{
     border: 2.3px solid #FF5FA0;
     color: #FF5FA0;
@@ -67,14 +71,14 @@
     gap: 2.5rem;
 }
 
-.dash-title,
-.metric-label{
-    color: rgba(245, 240, 232, 0.6);
-}
-
 .dash-metrics{
     display: flex;
     gap: 3rem;
+}
+
+.dash-title,
+.metric-label{
+    color: rgba(245, 240, 232, 0.6);
 }
 
 .metric{
@@ -90,6 +94,128 @@
     color: #97f560;
 }
 
+
+/*CSS DE LA SECCIÓN DE SOLUCIONES*/
+.solutions-section{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    
+}
+
+.solutions-header h2{
+    font-size: 40px;
+}
+.solutions-header span{
+    color: #FF5FA0
+}
+.solutions-header p{
+    color: rgba(245, 240, 232, 0.6);
+}
+
+.features-grid{
+    display: flex;
+    justify-content: space-between;
+}
+.features-grid h3{
+    font-size: 16px;
+}
+.features-grid .feature-card:nth-child(1) { 
+    border-color: rgba(151, 245, 96, 0.3); 
+}
+.features-grid .feature-card:nth-child(2) { 
+    border-color: rgba(255, 95, 160, 0.3); 
+}
+.features-grid .feature-card:nth-child(3) { 
+    border-color: rgba(210, 142, 16, 0.3); 
+}
+.features-grid .feature-card:nth-child(1) .feature-content a {
+    color: #97f560;
+}
+.features-grid .feature-card:nth-child(2) .feature-content a {
+    color: #FF5FA0;
+}
+.features-grid .feature-card:nth-child(3) .feature-content a {
+    color: #d28e10;
+}
+
+.feature-card:hover a {
+    filter: brightness(1.2);
+    text-decoration: underline;
+}
+.feature-card{
+    display: flex;
+    background-color: rgba(62, 58, 193, 0.05);
+    border-radius: 16px;
+    padding: 24px;
+    gap: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: 2.3px solid rgba(255, 255, 255, 0.1);
+}
+.feature-card a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: 600;
+}
+.feature-card h3{
+    color: white;
+}
+.feature-card p{
+    color: rgba(245, 240, 232, 0.6);
+    line-height: 1.5;
+}
+.feature-card a{
+    color: #FF5FA0;
+    text-align: right;
+}
+.feature-card:hover {
+    transform: scale(1.02); 
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05); 
+}
+.feature-card:nth-child(1):hover { 
+    border-color: rgba(151, 245, 96, 0.5); 
+}
+.feature-card:nth-child(2):hover { 
+    border-color: rgba(255, 95, 160, 0.5); 
+}
+.feature-card:nth-child(3):hover { 
+    border-color: rgba(210, 142, 16, 0.5); 
+}
+
+.feature-content{
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+}
+
+.gestion{
+    width: 40px;
+    height: 40px;
+    background-color: #97f560;
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.bell{
+    width: 40px;
+    height: 40px;
+    background-color: #FF5FA0;
+    padding-top: 5px;
+    padding-left: 7px;
+    border-radius: 7px;
+}
+.health{
+    width: 40px;
+    height: 40px;
+    background-color: #d28e10;
+    padding: 7px;
+    border-radius: 7px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+
+
+/*CSS DE LA SECCIÓN DE PROBLEMAS*/
 
 
 

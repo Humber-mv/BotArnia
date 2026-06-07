@@ -28,11 +28,9 @@
     color: #97f560;
     font-size: 17px;
 }
-
 .cta-texto h2{
     font-weight: bolder;
 }
-
 .cta-texto span{
     color: #97f560;
 }
@@ -92,7 +90,6 @@
     gap: 2rem;
     font-size: 17px;
 }
-
 .footer-social .insta:hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     -webkit-background-clip: text;
@@ -106,6 +103,7 @@
     color: #69C9D0;
     text-shadow: 2px 0px 0px #EE1D52;
 }
+
 .footer-brand{
     display: flex;
     gap: 0.75rem;
@@ -118,6 +116,7 @@
     padding: 3px;
     color: #081A36;
 }
+
 .logo-text{
     font-size: 16px;
     font-weight: bold;

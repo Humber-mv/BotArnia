@@ -1,4 +1,11 @@
 /*CSS DEL NAVBAR*/
+nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
 .nav-principal{
     display: flex;
     justify-content: space-between;
@@ -14,19 +21,11 @@
     z-index: 1000;
 }
 
-nav .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
-
 .nav-links{
     display: flex;
     gap: 2rem;
     align-items: center;
 }
-
 .nav-links li a{
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
@@ -34,11 +33,9 @@ nav .container {
     color: rgba(245, 240, 232, 0.6);
     transition: color 0.3s;
 }
-
 .nav-links li a:hover{
     color: #97f560;
 }
-
 
 /*CSS DEL LOGO*/
 .nav-logo{
@@ -54,6 +51,7 @@ nav .container {
     padding: 3px;
     color: #081A36;
 }
+
 .logo-text{
     font-size: 16px;
     font-weight: bold;
