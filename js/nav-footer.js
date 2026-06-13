@@ -4,13 +4,7 @@ async function cargarNav() {
     const html = await res.text();
     document.getElementById('nav-container').innerHTML = html;
 
-    // Marcar página activa
-    const links = document.querySelectorAll('.nav-links a');
-    links.forEach(link => {
-        if (link.href === window.location.href) {
-            link.classList.add('active');
-        }
-    });
+    
 }
 
 async function cargarFooter() {
