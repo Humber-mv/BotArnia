@@ -1,8 +1,10 @@
-const checkPlaga = document.getElementById("plaga")
+const tienePlaga = document.getElementById("plaga")
 const plagaFields = document.getElementById("plaga-fields")
 const nombre = document.getElementById("nombre")
 const error = document.getElementById("nombre-error")
 const botonRegistrar = document.querySelector(".registrar")
+const formulario = document.querySelector(".crop-form");
+
 
 const tipoPlaga = document.getElementById("tipo-plaga")
 const tipoPlagaError = document.getElementById("tipoPlaga-error")
@@ -12,14 +14,27 @@ const categoria = document.getElementById("categoria")
 const frecuenciaRiego = document.getElementById("frecuencia-riego")
 const frecuenciRiegoError = document.getElementById("frecuenciaRiego-error")
 
+const toastSuccess = document.querySelector(".toast-success")
 
 
-checkPlaga.addEventListener("change",()=>{
-    if(checkPlaga.checked){
+
+
+
+
+
+
+
+
+
+
+tienePlaga.addEventListener("change",()=>{
+    if(tienePlaga.checked){
         plagaFields.classList.add("visible")
+        tipoPlaga.required = true;
     }
     else{
         plagaFields.classList.remove("visible")
+        tipoPlaga.required = false;
     }
 });
 
@@ -28,17 +43,17 @@ nombre.addEventListener("input",()=>{
         error.textContent = "Debe tener al menos 3 caracteres"
         error.classList.add("error")
         nombre.style.borderColor = "red"
-
+        
+        botonRegistrar.disabled = true
         botonRegistrar.classList.add("boton-registrar-error")
-        botonRegistrar.disabled = true;
     }
     else{
         error.textContent = ""
         error.classList.remove("error")
         nombre.style.borderColor = "#91ff3d"
 
-        botonRegistrar.classList.remove("boton-registrar-error")
         botonRegistrar.disabled = false
+        botonRegistrar.classList.remove("boton-registrar-error")
     }
 })
 
@@ -64,8 +79,8 @@ frecuenciaRiego.addEventListener("change", () => {
         frecuenciRiegoError.classList.add("error");
         frecuenciaRiego.style.borderColor = "red"
     } else {
-        categoriaError.textContent = "";
-        categoriaError.classList.remove("error");
+        frecuenciRiegoError.textContent = "";
+        frecuenciRiegoError.classList.remove("error");
         frecuenciaRiego.style.borderColor = "#91ff3d" 
     }
 });
@@ -88,3 +103,16 @@ fecha.addEventListener("change", () => {
     } 
 });
 
+formulario.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    if (formulario.checkValidity()) {
+        toastSuccess.classList.add("toast-visible");
+
+        setTimeout(() => {
+            toastSuccess.classList.remove("toast-visible");
+        }, 2500);
+    }
+});
+
+console.log(formulario.addEventListener())

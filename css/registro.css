@@ -17,6 +17,69 @@
 }
 
 
+.toast-success{
+    position: fixed;
+    top: 90px;
+    right: 10px;
+
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background: linear-gradient(
+        to right, #0abf3055, #22242f 30%
+    );
+    padding: 10px;
+    border-radius: 5px;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+.toast-success::before{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: #91ff3d;
+    width: 100%;
+    height: 3px;
+    content: "";
+    box-shadow: 0 0 10px #91ff3d;
+}
+
+.toast-success.toast-visible::before{
+    animation: timeOut 2.5s linear 1 forwards;
+}
+
+
+
+
+
+@keyframes timeOut{
+    to{
+        width: 0;
+    }
+}
+
+.toast-success.toast-visible{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
+
+.content h4{
+    font-size: 20px;
+    font-weight: bold;
+}
+.content p{
+    font-size: 16px;
+    color: rgba(245, 240, 232, 0.6);
+}
+
+
+
 .crop-form{
     display: flex;
     flex-direction: column;
