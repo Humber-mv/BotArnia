@@ -18,15 +18,6 @@ const toastSuccess = document.querySelector(".toast-success")
 
 
 
-
-
-
-
-
-
-
-
-
 tienePlaga.addEventListener("change",()=>{
     if(tienePlaga.checked){
         plagaFields.classList.add("visible")
