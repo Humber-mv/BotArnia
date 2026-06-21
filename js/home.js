@@ -1,4 +1,4 @@
-//Animación css para el círculo del stat
+//Script para el círculo del stat
 const circulo = document.querySelector('.circulo-progreso');
 
 const observer = new IntersectionObserver((entries) => {

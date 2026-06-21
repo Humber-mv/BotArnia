@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/mis-cultivos.css">
+    <link rel="stylesheet" href="css/cultivos.css">
     <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
@@ -17,11 +17,60 @@
     </header>
 
     <main>
+        <div class="container">
+            <section class="cultivos-header">
 
+                <div class="top-text">
+                    <h1><span>Mis</span> cultivos</h1>
+                    <p>Gestioná y monitoreá tus cultivos en un solo lugar</p>
+                </div>
+                
+                <div class="toolbar">
+                    <div class="search-box">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="search-cultivo" placeholder="Buscar cultivo por nombre...">
+                    </div>
+                    <div class="filter-cleaner">
+                        <i class="fa-solid fa-arrow-rotate-left"></i>
+                        <button>Limpiar filtros</button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <div class="category-filter">
+                        <p>Categoría</p>
+                        <button>Todos</button>
+                        <button>Vegetales</button>
+                        <button>Frutas</button>
+                        <button>Hierbas</button>
+                        <button>Cereales</button>
+                        <button>Ornamentales</button>
+                    </div>
+
+                    <div class="health-filter">
+                        <p>Estado de salud</p>
+                        <button class="all">Todos</button>
+                        <button class="healthy">Saludables</button>
+                        <button class="attention">Necesitan atención</button>
+                        <button class="risk">En riesgo</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cultivos-list">
+
+            </section>
+
+
+
+
+
+        </div>
     </main>
 
     <div id="footer-container"></div>
     <script src="js/nav-footer.js"></script>
+    <script src="js/cultivos.js"></script>
 
 </body>
 </html>

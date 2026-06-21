@@ -1,161 +1,144 @@
 {
     "categorias": {
         "vegetal": {
-            "imagen": "/assets/images/vegetables.jpg",
+            "imagen": "assets/images/vegetables.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de vegetales. Procurá mantener una humedad constante en el suelo sin llegar al encharcamiento y revisá periódicamente su estado para identificar el momento adecuado de cosecha."
         },
         "frutal": {
-            "imagen": "/assets/images/fruits.jpg",
+            "imagen": "assets/images/fruits.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de frutales. Se recomienda realizar riegos regulares según las condiciones climáticas y observar el desarrollo de los frutos para cosecharlos cuando alcancen su madurez."
         },
         "hierba": {
-            "imagen": "/assets/images/herbals.jpg",
+            "imagen": "assets/images/herbals.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de hierbas. Generalmente prospera con riegos moderados y una buena exposición a la luz. Cosechar sus hojas de forma adecuada puede favorecer un crecimiento continuo."
         },
         "cereal": {
-            "imagen": "/assets/images/cereals.jpg",
+            "imagen": "assets/images/cereals.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de cereales. Mantén un programa de riego acorde con su etapa de desarrollo y verificá el estado de las espigas o granos antes de realizar la cosecha."
         },
         "ornamental": {
-            "imagen": "/assets/images/ornamentals.jpg",
+            "imagen": "assets/images/ornamentals.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de plantas ornamentales. Se recomienda mantener un riego equilibrado y retirar hojas o flores marchitas para favorecer su apariencia y desarrollo."
         }
     },
     "cultivos": {
         "tomate": {
-            "categoria": "vegetal",
             "diasMaduracion": 75,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 5,
-            "imagen": "/assets/images/tomato.jpeg",
+            "imagen": "assets/images/tomato.jpeg",
             "descripcion": "Fruto rojo de clima cálido, ideal para zonas costeras. Requiere soporte para sus ramas cuando madura."
         },
         "tomate cherry": {
-            "categoria": "vegetal",
             "diasMaduracion": 65,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 3,
-            "imagen": "/assets/images/cherry_tomato.jpg",
+            "imagen": "assets/images/cherry_tomato.jpg",
             "descripcion": "Produce pequeños tomates dulces en racimos. Muy productivo y fácil de cosechar de forma continua."
         },
         "chile jalapeño": {
-            "categoria": "vegetal",
             "diasMaduracion": 70,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 7,
-            "imagen": "/assets/images/jalapeño.png",
+            "imagen": "assets/images/jalapeño.png",
             "descripcion": "Chile picante de tamaño mediano. Se cosecha verde o rojo según el nivel de picor deseado."
         },
         "lechuga": {
-            "categoria": "vegetal",
             "diasMaduracion": 55,
             "cosechaRecurrente": false,
             "diasEntreCosechas": null,
-            "imagen": "/assets/images/lettuce.jpg",
+            "imagen": "assets/images/lettuce.jpg",
             "descripcion": "Hortaliza de hojas verdes de crecimiento rápido. Ideal para huertos pequeños y consumo fresco."
         },
         "pepino": {
-            "categoria": "vegetal",
             "diasMaduracion": 55,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 4,
-            "imagen": "/assets/images/cucumber.jpg",
+            "imagen": "assets/images/cucumber.jpg",
             "descripcion": "Fruto refrescante de rápido crecimiento. Necesita abundante agua y soporte para sus guías."
         },
         "banano": {
-            "categoria": "frutal",
             "diasMaduracion": 300,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 90,
-            "imagen": "/assets/images/banana.png",
+            "imagen": "assets/images/banana.png",
             "descripcion": "Fruta tropical muy común en Costa Rica. Una vez establecida la planta, produce racimos de forma continua."
         },
         "mango": {
-            "categoria": "frutal",
             "diasMaduracion": 120,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 365,
-            "imagen": "/assets/images/mango.png",
+            "imagen": "assets/images/mango.png",
             "descripcion": "Fruta tropical dulce y jugosa. El árbol tarda en madurar pero produce abundantemente cada temporada."
         },
         "papaya": {
-            "categoria": "frutal",
             "diasMaduracion": 180,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 14,
-            "imagen": "/assets/images/papaya.png",
+            "imagen": "assets/images/papaya.png",
             "descripcion": "Fruta tropical de rápido crecimiento. Produce frutos continuamente una vez que alcanza su madurez."
         },
         "maracuyá": {
-            "categoria": "frutal",
             "diasMaduracion": 180,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 7,
-            "imagen": "/assets/images/passion_fruit.jpg",
+            "imagen": "assets/images/passion_fruit.jpg",
             "descripcion": "Fruta tropical ácida y aromática. Crece en enredadera y produce frutos durante gran parte del año."
         },
         "culantro": {
-            "categoria": "hierba",
             "diasMaduracion": 30,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 7,
-            "imagen": "/assets/images/cilantro.jpg",
+            "imagen": "assets/images/cilantro.jpg",
             "descripcion": "Hierba aromática esencial en la cocina costarricense. Crece rápido y se puede cosechar continuamente."
         },
         "albahaca": {
-            "categoria": "hierba",
             "diasMaduracion": 28,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 7,
-            "imagen": "/assets/images/basil.jpg",
+            "imagen": "assets/images/basil.jpg",
             "descripcion": "Hierba aromática de sabor intenso. Requiere luz solar directa y riego moderado para prosperar."
         },
         "hierbabuena": {
-            "categoria": "hierba",
             "diasMaduracion": 35,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 10,
-            "imagen": "/assets/images/peppermint.jpg",
+            "imagen": "assets/images/peppermint.jpg",
             "descripcion": "Hierba refrescante de rápido crecimiento. Se recomienda cultivarla en macetas para controlar su expansión."
         },
         "orégano": {
-            "categoria": "hierba",
             "diasMaduracion": 45,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 14,
-            "imagen": "/assets/images/oregano.jpg",
+            "imagen": "assets/images/oregano.jpg",
             "descripcion": "Hierba aromática resistente a la sequía. Ideal para zonas cálidas y secas como la región del Pacífico."
         },
         "maíz": {
-            "categoria": "cereal",
             "diasMaduracion": 90,
             "cosechaRecurrente": false,
             "diasEntreCosechas": null,
-            "imagen": "/assets/images/corn.jpg",
+            "imagen": "assets/images/corn.jpg",
             "descripcion": "Cereal básico de la dieta costarricense. Requiere suelo fértil y riego constante durante su desarrollo."
         },
         "arroz": {
-            "categoria": "cereal",
             "diasMaduracion": 120,
             "cosechaRecurrente": false,
             "diasEntreCosechas": null,
-            "imagen": "/assets/images/rice.jpg",
+            "imagen": "assets/images/rice.jpg",
             "descripcion": "Cereal fundamental en la alimentación. Requiere terrenos con buen acceso al agua para su cultivo."
         },
         "frijol": {
-            "categoria": "cereal",
             "diasMaduracion": 85,
             "cosechaRecurrente": false,
             "diasEntreCosechas": null,
-            "imagen": "/assets/images/beans.png",
+            "imagen": "assets/images/beans.png",
             "descripcion": "Leguminosa esencial en la dieta costarricense. Fija nitrógeno en el suelo y mejora su fertilidad."
         },
         "rosa": {
-            "categoria": "ornamental",
             "diasMaduracion": 90,
             "cosechaRecurrente": true,
             "diasEntreCosechas": 30,
-            "imagen": "/assets/images/rose.jpg",
+            "imagen": "assets/images/rose.jpg",
             "descripcion": "Planta ornamental apreciada por la belleza y fragancia de sus flores. Requiere buena iluminación, podas periódicas y riego moderado para estimular nuevas floraciones."
         }
     }
