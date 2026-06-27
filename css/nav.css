@@ -63,3 +63,36 @@ nav .container {
 .logo-arnia{
     color: #91ff3d;
 }
+
+.breadcrumb {
+    background: rgba(6, 20, 42, 0.75);
+    padding: 12px 0;
+}
+
+
+.breadcrumb{
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+}
+
+.breadcrumb a::after {
+    content: "/";
+    margin: 8px 8px;
+    color: rgba(245, 240, 232, 0.25);
+}
+
+.breadcrumb a {
+    color: rgba(245, 240, 232, 0.5);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #91ff3d;
+}
+
+.breadcrumb span {
+    color: #91ff3d;
+    font-weight: 600;
+}
