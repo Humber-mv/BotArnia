@@ -10,7 +10,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-14",
         "ultimaFechaCosecha": "2026-06-10",
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 2,
@@ -23,7 +24,8 @@
         "observaciones": "Hojas amarillas en la parte baja, posible infestación de áfidos.",
         "ultimaFechaRiego": "2026-06-12",
         "ultimaFechaCosecha": null,
-        "activo": true
+        "activo": true,
+        "estado": "riesgo"
     },
     {
         "id": 3,
@@ -36,7 +38,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-14",
         "ultimaFechaCosecha": null,
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 4,
@@ -49,7 +52,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-15",
         "ultimaFechaCosecha": "2026-06-08",
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 5,
@@ -62,7 +66,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-13",
         "ultimaFechaCosecha": null,
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 6,
@@ -75,7 +80,8 @@
         "observaciones": "Se detectaron manchas blancas en las hojas inferiores.",
         "ultimaFechaRiego": "2026-06-11",
         "ultimaFechaCosecha": null,
-        "activo": true
+        "activo": true,
+        "estado": "riesgo"
     },
     {
         "id": 7,
@@ -88,7 +94,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-16",
         "ultimaFechaCosecha": null,
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 8,
@@ -101,7 +108,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-15",
         "ultimaFechaCosecha": "2026-06-12",
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 9,
@@ -114,7 +122,8 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-14",
         "ultimaFechaCosecha": "2026-06-02",
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     },
     {
         "id": 10,
@@ -127,6 +136,7 @@
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-13",
         "ultimaFechaCosecha": null,
-        "activo": true
+        "activo": true,
+        "estado": "saludable"
     }
 ]

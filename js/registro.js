@@ -109,7 +109,8 @@ formulario.addEventListener("submit", (e) => {
             tienePlaga: tienePlaga.checked,
             tipoPlaga: tienePlaga.checked ? tipoPlaga.value : null,
             observaciones: tienePlaga.checked ? observaciones.value : null,
-            activo: true
+            activo: true,
+            estado: "saludable"
         };
 
         let cultivosGuardados = JSON.parse(localStorage.getItem("cultivos"));

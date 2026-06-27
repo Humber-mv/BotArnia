@@ -1,32 +1,29 @@
-
-
-.cultivos-header{
-    margin: 60px 0 ;
+/* ===== HEADER DE LA PÁGINA ===== */
+.cultivos-header {
+    margin: 60px 0;
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.top-text span{
+.top-text span {
     color: #91ff3d;
 }
-.top-text h1{
+
+.top-text h1 {
     font-size: 40px;
 }
-.top-text p{
+
+.top-text p {
     color: #f5f0e8e6;
 }
 
-.toolbar{
+/* ===== BARRA DE BÚSQUEDA Y LIMPIAR FILTROS ===== */
+.toolbar {
     display: flex;
     gap: 16px;
     align-items: center;
 }
-.filters{
-    display: flex;
-    justify-content: space-between;
-}
-
 
 .search-box,
 .filter-cleaner {
@@ -34,22 +31,21 @@
 }
 
 .search-box i,
-.filter-cleaner i{
+.filter-cleaner i {
     position: absolute;
     left: 12px;
     top: 50%;
     transform: translateY(-50%);
-    pointer-events: none; /* evita que el ícono bloquee clics */
+    pointer-events: none;
 }
-.search-box i{
+
+.search-box i {
     color: #494d53;
 }
-.filter-cleaner i{
+
+.filter-cleaner i {
     color: #3588d1;
 }
-
-
-
 
 .search-box input {
     width: 700px;
@@ -79,6 +75,11 @@
     transform: translateY(-1px);
 }
 
+/* ===== FILTROS DE CATEGORÍA Y ESTADO ===== */
+.filters {
+    display: flex;
+    justify-content: space-between;
+}
 
 .category-filter button,
 .health-filter button {
@@ -94,51 +95,62 @@
     margin-top: 15px;
 }
 
-.category-filter button:hover {
-    border-color: #91ff3d;
-    color: #91ff3d;
-}
-
-.health-filter :no-p,
-.category-filter :no-p{
+.category-filter p,
+.health-filter p {
     display: flex;
     gap: 5px;
 }
 
+.category-filter button:hover {
+    border:2px solid #91ff3d4e;
+}
 
-.health-filter .all:hover {
+.health-filter .all-state:hover {
     border-color: #91ff3d;
     color: #91ff3d;
 }
 
-
 .health-filter .healthy:hover {
-    border-color: #22c55e;
-    color: #22c55e;
+    border:2px solid #22c55e98;
 }
-
 
 .health-filter .attention:hover {
-    border-color: #f59e0b;
-    color: #f59e0b;
+    border:2px solid #f59f0b79;
 }
-
 
 .health-filter .risk:hover {
-    border-color: #ef4444;
-    color: #ef4444;
+    border:2px solid #ef44448b;
 }
 
+/* Filtro activo seleccionado por el usuario */
+.click-boton {
+    border: 2px solid #91ff3d !important;
+    color: #91ff3d !important;
+}
 
+.click-boton-healthy{
+    border: 2px solid #22c55e !important;
+    color: #22c55e !important;
+}
 
-/* CONTENEDOR — donde van todas las cards */
+.click-boton-attention{
+    border: 2px solid #f59e0b !important;
+    color: #f59e0b !important;
+}
+
+.click-boton-risk{
+    border: 2px solid #ef4444 !important;
+    color: #ef4444 !important;
+}
+
+/* ===== LISTADO DE CULTIVOS (CONTENEDOR) ===== */
 .cultivos-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
 }
 
-/* CARD INDIVIDUAL */
+/* ===== CARD DE CULTIVO ===== */
 .cultivo-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -152,7 +164,6 @@
     transform: translateY(-2px);
 }
 
-/* IMAGEN */
 .cultivo-card img {
     width: 100%;
     height: 160px;
@@ -160,7 +171,6 @@
     display: block;
 }
 
-/* TÍTULO */
 .cultivo-card h3 {
     font-size: 16px;
     font-weight: 600;
@@ -168,7 +178,6 @@
     margin: 14px 16px 2px;
 }
 
-/* CATEGORÍA */
 .cultivo-card > p {
     font-size: 13px;
     color: #C8F560;
@@ -197,6 +206,7 @@
     width: 14px;
 }
 
+/* Botones de acción dentro de la card */
 .cultivo-card .actions {
     display: flex;
     gap: 8px;
@@ -214,6 +224,10 @@
     transition: filter 0.2s;
 }
 
+.cultivo-card .actions button:hover {
+    filter: brightness(1.2);
+}
+
 .btn-riego {
     background: rgba(79, 195, 247, 0.15);
     color: #4FC3F7;
@@ -229,6 +243,36 @@
     color: #F5F0E8;
 }
 
-.cultivo-card .actions button:hover {
-    filter: brightness(1.2);
+/* ===== ESTADO VACÍO (SIN RESULTADOS) ===== */
+.no-results-message {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 3rem 2rem;
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+.no-results-message.visible {
+    display: flex;
+    grid-column: 1 / -1;
+    justify-content: center;
+    align-items: center;
+}
+
+.no-results-message i {
+    font-size: 3rem;
+    color: #91ff3d;
+}
+
+.no-results-message h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #91ff3d;
+}
+
+.no-results-message p {
+    line-height: 1.5;
+    color: #666;
 }

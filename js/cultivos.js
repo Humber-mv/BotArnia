@@ -1,6 +1,12 @@
+
+let todosLosCultivos = [];
+let diccionarioGlobal = {};
+
+
 function crearTarjetaCultivo(cultivo, diccionario){
 
-    const info = diccionario.cultivos[cultivo.nombre.toLowerCase()];
+    const info = diccionario.cultivos[cultivo.nombre.toLowerCase()] ||
+    diccionario.categorias[cultivo.categoria.toLowerCase()];
 
     const tarjeta = document.createElement("article")
 
@@ -29,18 +35,16 @@ function crearTarjetaCultivo(cultivo, diccionario){
 
 function reenderizarCultivos(listaCultivos, diccionario) {
     const contenedor = document.querySelector(".cultivos-list");
-
-    contenedor.innerHTML = "";
+    const mensajeVacio = document.querySelector(".no-results-message");
+    contenedor.querySelectorAll(".cultivo-card").forEach(card => card.remove());
 
     if (listaCultivos.length === 0) {
-        contenedor.innerHTML = /* html */ `
-            <div class="no-results">
-                <h3>Sin resultados</h3>
-                <p>Cambie los filtros para visualizar otros cultivos disponibles.</p>
-            </div>
-        `;
+        mensajeVacio.classList.add("visible");
         return;
     }
+
+    mensajeVacio.classList.remove("visible");
+
 
     listaCultivos.forEach(cultivo => {
         const tarjeta = crearTarjetaCultivo(cultivo, diccionario);
@@ -59,16 +63,16 @@ async function cargarCultivos() {
         //Cargar diccionario
         const resDiccionario = await fetch('data/diccionario.json');
         if (!resDiccionario.ok) throw new Error('No se pudo cargar diccionario.json');
-        const diccionario = await resDiccionario.json();
+        diccionarioGlobal = await resDiccionario.json();
 
         //Cargar registros del usuario desde localStorage
         const cultivosLocal = JSON.parse(localStorage.getItem('cultivos')) || [];
 
         //Combinar ambas fuentes
-        const todosLosCultivos = [...cultivosJSON, ...cultivosLocal];
+        todosLosCultivos = [...cultivosJSON, ...cultivosLocal];
 
         //Renderizar en pantalla
-        reenderizarCultivos(todosLosCultivos, diccionario);
+        reenderizarCultivos(todosLosCultivos, diccionarioGlobal);
 
     } catch (error) {
         console.error('Error al cargar los cultivos:', error);
@@ -83,3 +87,130 @@ async function cargarCultivos() {
     }
 }
 cargarCultivos();
+
+
+
+function busquedaCultivos() {
+    const filtroBusqueda = document.getElementById("search-cultivo")
+    const todosCategoria = document.querySelector(".all-category")
+    const vegetalesCategoria = document.querySelector(".vegetable")
+    const frutasCategoria = document.querySelector(".fruits")
+    const hierbasCategoria = document.querySelector(".herbs")
+    const cerealesCategoria = document.querySelector(".cereals")
+    const ornamentalesCategoria = document.querySelector(".ornamentals")
+    const todosEstado = document.querySelector(".all-state")
+    const saludableEstado = document.querySelector(".healthy")
+    const atencionEstado = document.querySelector(".attention")
+    const riesgoEstado = document.querySelector(".risk")
+    const botonesCategoria = document.querySelectorAll(".btn-categoria")
+    const botonesEstado = document.querySelectorAll(".btn-estado")
+    let texto = ""
+    let categoriaSeleccionada = ""
+    let estadoSeleccionado = ""
+
+    function quitarBordeCategoria() {
+        botonesCategoria.forEach(boton => {
+            boton.classList.remove("click-boton");
+        });
+    }
+
+    function quitarBordeEstado() {
+        botonesEstado.forEach(boton => {
+            boton.classList.remove("click-boton");
+            boton.classList.remove("click-boton-healthy");
+            boton.classList.remove("click-boton-attention");
+            boton.classList.remove("click-boton-risk");
+        });
+    }
+    
+    function aplicarFiltros() {
+        const nuevoArreglo = todosLosCultivos.filter(cultivo => {
+
+            const nombreCultivo = cultivo.nombre.toLowerCase();
+            const cumpleTexto = nombreCultivo.startsWith(texto);
+            const cumpleCategoria = categoriaSeleccionada === "" || cultivo.categoria === categoriaSeleccionada;
+            const cumpleEstado = estadoSeleccionado === "" || cultivo.estado === estadoSeleccionado;
+
+            return ( cumpleTexto && cumpleCategoria && cumpleEstado );
+        });
+        reenderizarCultivos(nuevoArreglo, diccionarioGlobal);
+    }
+    
+    function seleccionarCategoria(valor, boton) {
+        categoriaSeleccionada = valor;
+        quitarBordeCategoria();
+        boton.classList.add("click-boton");
+        aplicarFiltros();
+    }
+
+    function seleccionarEstado(valor, boton) {
+        estadoSeleccionado = valor;
+        quitarBordeEstado()
+        if(valor === "saludable"){ 
+            boton.classList.add("click-boton-healthy"); 
+        } 
+        else if(valor === "atencion"){ 
+            boton.classList.add("click-boton-attention"); 
+        } 
+        else if(valor === "riesgo"){ 
+            boton.classList.add("click-boton-risk"); 
+        } 
+        else{ 
+            boton.classList.add("click-boton"); 
+        }
+        aplicarFiltros();
+    }
+
+    filtroBusqueda.addEventListener("input", () => {
+        texto = filtroBusqueda.value.toLowerCase().trim();
+        aplicarFiltros();
+    });
+
+    vegetalesCategoria.addEventListener("click", () => {
+        seleccionarCategoria("vegetal", vegetalesCategoria)
+    });
+
+    frutasCategoria.addEventListener("click", () => {
+        seleccionarCategoria("frutal", frutasCategoria)
+    });
+
+    hierbasCategoria.addEventListener("click", () => {
+        seleccionarCategoria("hierba", hierbasCategoria)
+    });
+
+    cerealesCategoria.addEventListener("click", () => {
+        seleccionarCategoria("cereal", cerealesCategoria)
+    });
+
+    ornamentalesCategoria.addEventListener("click", () => {
+        seleccionarCategoria("ornamental", ornamentalesCategoria)
+    });
+
+    todosCategoria.addEventListener("click", () => {
+        seleccionarCategoria("", todosCategoria)
+    });
+
+    saludableEstado.addEventListener("click", () => {
+        seleccionarEstado("saludable", saludableEstado)
+    });
+
+    atencionEstado.addEventListener("click", () => {
+        seleccionarEstado("atencion", atencionEstado)
+    });
+
+    riesgoEstado.addEventListener("click", () => {
+        seleccionarEstado("riesgo", riesgoEstado)
+    });
+
+    todosEstado.addEventListener("click", () => {
+        seleccionarEstado("", todosEstado)
+    });
+}
+
+busquedaCultivos()
+
+
+
+
+
+
