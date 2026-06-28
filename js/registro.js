@@ -18,6 +18,9 @@ const toastSuccess = document.querySelector(".toast-success")
 
 const vistaPrevia = document.querySelector(".crop-preview")
 
+const limpiar = document.querySelector(".limpiar")
+let mensajeToast = document.querySelector(".toast-message")
+
 
 function generarVistaPrevia(cultivo) {
 
@@ -27,8 +30,8 @@ function generarVistaPrevia(cultivo) {
     
     if (cultivo.tienePlaga) {
         tienePlaga = "Sí";
-        tipoPlaga = cultivo.tipoPlaga;
-        observaciones = cultivo.observaciones;
+        tipoPlaga = cultivo.tipoPlaga || "-----";
+        observaciones = cultivo.observaciones || "-----";
     }
 
     vistaPrevia.innerHTML = /* html */ 
@@ -51,7 +54,7 @@ function generarVistaPrevia(cultivo) {
             <div class="row-info">
                 <div class="group-info">
                     <p>Frecuencia de riego</p>
-                    <h4>${cultivo.frecuenciaRiego}</h4>
+                    <h4>${formatearTexto(cultivo.frecuenciaRiego)}</h4>
                 </div>
                 <div class="group-info">
                     <p>¿Tiene plaga?</p>
@@ -63,7 +66,7 @@ function generarVistaPrevia(cultivo) {
                     <p>Tipo de plaga</p>
                     <h4>${tipoPlaga}</h4>
                 </div>
-                <div div class="group-info">
+                <div class="group-info">
                     <p>Observaciones</p>
                     <h4>${observaciones}</h4>
                 </div>
@@ -71,8 +74,6 @@ function generarVistaPrevia(cultivo) {
         </div>
     `
 }
-
-
 
 function actualizarVistaPrevia(){
 
@@ -104,29 +105,6 @@ tienePlaga.addEventListener("change", actualizarVistaPrevia);
 tipoPlaga.addEventListener("change", actualizarVistaPrevia);
 
 observaciones.addEventListener("input", actualizarVistaPrevia);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 tienePlaga.addEventListener("change",()=>{
     if(tienePlaga.checked){
@@ -238,15 +216,38 @@ formulario.addEventListener("submit", (e) => {
         );
 
         toastSuccess.classList.add("toast-visible");
+        mensajeToast.textContent= "Cultivo registrado"
 
         setTimeout(() => {
             toastSuccess.classList.remove("toast-visible");
-        }, 2000);
+        }, 1500);
     }
 });  
 
+formulario.addEventListener("reset", () => {
+
+    toastSuccess.classList.add("toast-visible");
+    mensajeToast.textContent = "Formulario limpio";
+
+    setTimeout(() => {
+        toastSuccess.classList.remove("toast-visible");
+    }, 1500);
+
+    generarVistaPrevia({
+        nombre: "-----",
+        categoria: "-----",
+        fechaSiembra: "-----",
+        frecuenciaRiego: "-----",
+        tienePlaga: false,
+        tipoPlaga: "-----",
+        observaciones: "-----"
+    });
+
+});
 
 function formatearTexto(valor) {
-    return valor.replaceAll("-", " ")
+    if (valor === "-----") return valor;
+
+    return valor.replaceAll("-", " ");
 }
 
