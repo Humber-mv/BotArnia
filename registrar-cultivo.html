@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,77 +23,81 @@
                     <h1><span>Registro</span> de nuevo cultivo</h1>
                     <p>Ingresá los detalles de tu siembra para incluirla a tu control de cultivos</p>
                 </div>
-                <form class="crop-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre">Nombre del cultivo <span class="asterisco">*</span></label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Tomate" required>
-                            <small id="nombre-error"></small>
-                        </div>
-                        <div class="form-group">
-                            <label for="categoria">Categoría <span class="asterisco">*</span></label>
-                            <select name="categoria" id="categoria" required>
-                                <option value="">Seleccione una categoría</option>
-                                <option value="vegetal">Vegetal</option>
-                                <option value="frutal">Frutal</option>
-                                <option value="hierba">Hierba</option>
-                                <option value="cereal">Cereal</option>
-                                <option value="ornamental">Ornamental</option>
-                            </select>
-                            <small id="categoria-error"></small>
-                        </div>
-                    </div>
 
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fecha">Fecha de siembra <span class="asterisco">*</span></label>
-                            <input type="date" id="fecha" name="fecha" required>
+                <div class="crop-content">
+                    <form class="crop-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombre">Nombre del cultivo <span class="asterisco">*</span></label>
+                                <input type="text" id="nombre" name="nombre" placeholder="Tomate" required>
+                                <small id="nombre-error"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="categoria">Categoría <span class="asterisco">*</span></label>
+                                <select name="categoria" id="categoria" required>
+                                    <option value="">Seleccione una categoría</option>
+                                    <option value="vegetal">Vegetal</option>
+                                    <option value="frutal">Frutal</option>
+                                    <option value="hierba">Hierba</option>
+                                    <option value="cereal">Cereal</option>
+                                    <option value="ornamental">Ornamental</option>
+                                </select>
+                                <small id="categoria-error"></small>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="frecuencia-riego">Frecuencia de riego <span class="asterisco">*</span></label>
-                            <select name="frecuenciaRiego" id="frecuencia-riego" required>
-                                <option value="">Seleccione una frecuencia</option>
-                                <option value="diario">Diario</option>
-                                <option value="cada-2-dias">Cada 2 días</option>
-                                <option value="cada-3-dias">Cada 3 días</option>
-                                <option value="semanal">Semanal</option>
-                                <option value="quincenal">Quincenal</option>
-                                <option value="segun-necesidad">Según necesidad</option>
-                            </select>
-                            <small id="frecuenciaRiego-error"></small>
-                        </div>
-                    </div>
 
-                    <div class="form-group toggle-group">
-                        <label for="plaga">¿Tiene plaga activa?</label>
-                        <div class="toggle-row">
-                            <span>Activar si hay plaga o algún problema</span>
-                            <input type="checkbox" id="plaga" name="plaga">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fecha">Fecha de siembra <span class="asterisco">*</span></label>
+                                <input type="date" id="fecha" name="fecha" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="frecuencia-riego">Frecuencia de riego <span class="asterisco">*</span></label>
+                                <select name="frecuenciaRiego" id="frecuencia-riego" required>
+                                    <option value="">Seleccione una frecuencia</option>
+                                    <option value="diario">Diario</option>
+                                    <option value="cada-2-dias">Cada 2 días</option>
+                                    <option value="cada-3-dias">Cada 3 días</option>
+                                    <option value="semanal">Semanal</option>
+                                    <option value="quincenal">Quincenal</option>
+                                    <option value="segun-necesidad">Según necesidad</option>
+                                </select>
+                                <small id="frecuenciaRiego-error"></small>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="plaga-fields" id="plaga-fields">
-                        <div class="form-group">
-                            <label for="tipo-plaga">Tipo de plaga <span class="asterisco">*</span></label>
-                            <select id="tipo-plaga" name="tipoPlaga">
-                                <option value="">Seleccioná un tipo</option>
-                                <option value="afidos">Áfidos</option>
-                                <option value="mosca-blanca">Mosca blanca</option>
-                                <option value="hongos">Hongos</option>
-                                <option value="otros">Otros</option>
-                            </select>
-                            <small id="tipoPlaga-error"></small>
+                        <div class="form-group toggle-group">
+                            <label for="plaga">¿Tiene plaga activa?</label>
+                            <div class="toggle-row">
+                                <span>Activar si hay plaga o algún problema</span>
+                                <input type="checkbox" id="plaga" name="plaga">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="observaciones">Observaciones</label>
-                            <textarea id="observaciones" name="observaciones" placeholder="Hojas amarillas en la parte baja..."></textarea>
+
+                        <div class="plaga-fields" id="plaga-fields">
+                            <div class="form-group">
+                                <label for="tipo-plaga">Tipo de plaga <span class="asterisco">*</span></label>
+                                <select id="tipo-plaga" name="tipoPlaga">
+                                    <option value="">Seleccioná un tipo</option>
+                                    <option value="afidos">Áfidos</option>
+                                    <option value="mosca-blanca">Mosca blanca</option>
+                                    <option value="hongos">Hongos</option>
+                                    <option value="otros">Otros</option>
+                                </select>
+                                <small id="tipoPlaga-error"></small>
+                            </div>
+                            <div class="form-group">
+                                <label for="observaciones">Observaciones</label>
+                                <textarea id="observaciones" name="observaciones" placeholder="Hojas amarillas en la parte baja..."></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-buttons">
-                        <button type="submit" class="registrar">Registrar cultivo</button>
-                        <button type="reset" class="limpiar">Limpiar</button>
-                    </div>
-                </form>
+                        <div class="form-buttons">
+                            <button type="submit" class="registrar">Registrar cultivo</button>
+                            <button type="reset" class="limpiar">Limpiar</button>
+                        </div>
+                    </form>    
+                    <div class="crop-preview"></div>
+                </div>
             </section>
         </div>
     </main>

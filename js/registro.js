@@ -16,6 +16,116 @@ const frecuenciRiegoError = document.getElementById("frecuenciaRiego-error")
 
 const toastSuccess = document.querySelector(".toast-success")
 
+const vistaPrevia = document.querySelector(".crop-preview")
+
+
+function generarVistaPrevia(cultivo) {
+
+    let tienePlaga = "No";
+    let tipoPlaga = "-----";
+    let observaciones = "-----";
+    
+    if (cultivo.tienePlaga) {
+        tienePlaga = "Sí";
+        tipoPlaga = cultivo.tipoPlaga;
+        observaciones = cultivo.observaciones;
+    }
+
+    vistaPrevia.innerHTML = /* html */ 
+    `
+        <div class="preview-image">
+            <img src="assets/images/plant.jpg" alt="Imagen ilustrativa de cultivo" />
+        </div>
+        <div class="preview-info">
+            <h3>${cultivo.nombre}</h3>
+            <div class="row-info">
+                <div class="group-info">
+                    <p>Categoría</p>
+                    <h4>${cultivo.categoria}</h4>
+                </div>
+                <div class="group-info">
+                    <p>Fecha de siembra</p>
+                    <h4>${cultivo.fechaSiembra}</h4>
+                </div>
+            </div>
+            <div class="row-info">
+                <div class="group-info">
+                    <p>Frecuencia de riego</p>
+                    <h4>${cultivo.frecuenciaRiego}</h4>
+                </div>
+                <div class="group-info">
+                    <p>¿Tiene plaga?</p>
+                    <h4>${tienePlaga}</h4>
+                </div>
+            </div>
+            <div class="row-info">
+                <div class="group-info">
+                    <p>Tipo de plaga</p>
+                    <h4>${tipoPlaga}</h4>
+                </div>
+                <div div class="group-info">
+                    <p>Observaciones</p>
+                    <h4>${observaciones}</h4>
+                </div>
+            </div>
+        </div>
+    `
+}
+
+
+
+function actualizarVistaPrevia(){
+
+    const cultivo = {
+        nombre: nombre.value || "-----",
+        categoria: categoria.value || "-----",
+        fechaSiembra: fecha.value || "-----",
+        frecuenciaRiego: frecuenciaRiego.value || "-----",
+        tienePlaga: tienePlaga.checked,
+        tipoPlaga: tipoPlaga.value || "-----",
+        observaciones: observaciones.value || "-----"
+    };
+
+    generarVistaPrevia(cultivo);
+
+}
+
+
+nombre.addEventListener("input", actualizarVistaPrevia);
+
+categoria.addEventListener("change", actualizarVistaPrevia);
+
+fecha.addEventListener("change", actualizarVistaPrevia);
+
+frecuenciaRiego.addEventListener("change", actualizarVistaPrevia);
+
+tienePlaga.addEventListener("change", actualizarVistaPrevia);
+
+tipoPlaga.addEventListener("change", actualizarVistaPrevia);
+
+observaciones.addEventListener("input", actualizarVistaPrevia);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 tienePlaga.addEventListener("change",()=>{
@@ -139,3 +249,4 @@ formulario.addEventListener("submit", (e) => {
 function formatearTexto(valor) {
     return valor.replaceAll("-", " ")
 }
+
