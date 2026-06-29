@@ -4,6 +4,117 @@ let diccionarioGlobal = {};
 
 const toastSuccess = document.querySelector(".toast-success")
 let mensajeToast = document.querySelector(".toast-message")
+const botonesCategoria = document.querySelectorAll(".btn-categoria")
+const botonesEstado = document.querySelectorAll(".btn-estado")
+let texto = ""
+let categoriaSeleccionada = "todas"
+let estadoSeleccionado = "todos"
+
+
+function quitarBordeCategoria() {
+        botonesCategoria.forEach(boton => {
+            boton.classList.remove("click-boton");
+        });
+    }
+
+function quitarBordeEstado() {
+        botonesEstado.forEach(boton => {
+            boton.classList.remove("click-boton");
+            boton.classList.remove("click-boton-healthy");
+            boton.classList.remove("click-boton-attention");
+            boton.classList.remove("click-boton-risk");
+        });
+    }
+
+
+function aplicarFiltros() {
+        const nuevoArreglo = todosLosCultivos.filter(cultivo => {
+
+            const nombreCultivo = cultivo.nombre.toLowerCase();
+            const cumpleTexto = nombreCultivo.startsWith(texto);
+            const cumpleCategoria = categoriaSeleccionada === "todas" || cultivo.categoria === categoriaSeleccionada;
+            const cumpleEstado = estadoSeleccionado === "todos" || calcularEstado(cultivo) === estadoSeleccionado;
+
+            return ( cumpleTexto && cumpleCategoria && cumpleEstado );
+        });
+        reenderizarCultivos(nuevoArreglo, diccionarioGlobal);
+    }
+    
+    function seleccionarCategoria(valor, boton) {
+        categoriaSeleccionada = valor;
+        quitarBordeCategoria();
+        boton.classList.add("click-boton");
+
+        if(valor === ""){ 
+            boton.classList.remove("click-boton"); 
+        } 
+
+        aplicarFiltros();
+    }
+
+    function seleccionarEstado(valor, boton) {
+        estadoSeleccionado = valor;
+        quitarBordeEstado()
+        if(valor === "saludable"){ 
+            boton.classList.add("click-boton-healthy"); 
+        } 
+        else if(valor === "atencion"){ 
+            boton.classList.add("click-boton-attention"); 
+        } 
+        else if(valor === "riesgo"){ 
+            boton.classList.add("click-boton-risk"); 
+        } 
+        else if(valor === ""){ 
+            boton.classList.remove("click-boton"); 
+        } 
+        else{ 
+            boton.classList.add("click-boton"); 
+        }
+        aplicarFiltros();
+    }
+
+
+
+const botonLimpiar = document.querySelector(".btn-limpiar-filtro")
+
+function limpiarFiltros() {
+    const todosCategoria = document.querySelector(".all-category");
+    const todosEstado = document.querySelector(".all-state");
+    const filtroBusqueda = document.getElementById("search-cultivo");
+
+    
+    if (filtroBusqueda) {
+        filtroBusqueda.value = "";
+    }
+    texto = "";
+
+    
+    if (todosCategoria) {
+        seleccionarCategoria("todas", todosCategoria);
+    }
+    
+    if (todosEstado) {
+        seleccionarEstado("todos", todosEstado);
+    }
+}
+
+
+
+botonLimpiar.addEventListener("click", ()=>{
+    limpiarFiltros()
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function crearTarjetaCultivo(cultivo, diccionario) {
@@ -184,64 +295,12 @@ function busquedaCultivos() {
     const saludableEstado = document.querySelector(".healthy")
     const atencionEstado = document.querySelector(".attention")
     const riesgoEstado = document.querySelector(".risk")
-    const botonesCategoria = document.querySelectorAll(".btn-categoria")
-    const botonesEstado = document.querySelectorAll(".btn-estado")
-    let texto = ""
-    let categoriaSeleccionada = ""
-    let estadoSeleccionado = ""
-
-    function quitarBordeCategoria() {
-        botonesCategoria.forEach(boton => {
-            boton.classList.remove("click-boton");
-        });
-    }
-
-    function quitarBordeEstado() {
-        botonesEstado.forEach(boton => {
-            boton.classList.remove("click-boton");
-            boton.classList.remove("click-boton-healthy");
-            boton.classList.remove("click-boton-attention");
-            boton.classList.remove("click-boton-risk");
-        });
-    }
     
-    function aplicarFiltros() {
-        const nuevoArreglo = todosLosCultivos.filter(cultivo => {
-
-            const nombreCultivo = cultivo.nombre.toLowerCase();
-            const cumpleTexto = nombreCultivo.startsWith(texto);
-            const cumpleCategoria = categoriaSeleccionada === "" || cultivo.categoria === categoriaSeleccionada;
-            const cumpleEstado = estadoSeleccionado === "" || calcularEstado(cultivo) === estadoSeleccionado;
-
-            return ( cumpleTexto && cumpleCategoria && cumpleEstado );
-        });
-        reenderizarCultivos(nuevoArreglo, diccionarioGlobal);
-    }
     
-    function seleccionarCategoria(valor, boton) {
-        categoriaSeleccionada = valor;
-        quitarBordeCategoria();
-        boton.classList.add("click-boton");
-        aplicarFiltros();
-    }
-
-    function seleccionarEstado(valor, boton) {
-        estadoSeleccionado = valor;
-        quitarBordeEstado()
-        if(valor === "saludable"){ 
-            boton.classList.add("click-boton-healthy"); 
-        } 
-        else if(valor === "atencion"){ 
-            boton.classList.add("click-boton-attention"); 
-        } 
-        else if(valor === "riesgo"){ 
-            boton.classList.add("click-boton-risk"); 
-        } 
-        else{ 
-            boton.classList.add("click-boton"); 
-        }
-        aplicarFiltros();
-    }
+    quitarBordeCategoria()
+    quitarBordeEstado()
+    
+    
 
     filtroBusqueda.addEventListener("input", () => {
         texto = filtroBusqueda.value.toLowerCase().trim();
@@ -269,7 +328,7 @@ function busquedaCultivos() {
     });
 
     todosCategoria.addEventListener("click", () => {
-        seleccionarCategoria("", todosCategoria)
+        seleccionarCategoria("todas", todosCategoria)
     });
 
     saludableEstado.addEventListener("click", () => {
@@ -285,7 +344,7 @@ function busquedaCultivos() {
     });
 
     todosEstado.addEventListener("click", () => {
-        seleccionarEstado("", todosEstado)
+        seleccionarEstado("todos", todosEstado)
     });
 }
 
@@ -324,6 +383,8 @@ function eliminarCultivo(id) {
         diccionarioGlobal
     );
 }
+
+
 
 
 
