@@ -1,4 +1,3 @@
-
 async function cargarNav() {
     const res = await fetch('components/nav.html');
     const html = await res.text();

@@ -2,13 +2,9 @@
 const resCultivos = await fetch("data/cultivos.json");
 const cultivosJSON = await resCultivos.json();
 
-const cultivosLocal =
-    JSON.parse(localStorage.getItem("cultivos")) || [];
+const cultivosLocal = JSON.parse(localStorage.getItem("cultivos")) || [];
 
-const todosLosCultivos = [
-    ...cultivosJSON,
-    ...cultivosLocal
-];
+const todosLosCultivos = combinarCultivos(cultivosJSON, cultivosLocal);   
 
 // Contadores
 let contadorSaludables = 0;
@@ -16,17 +12,17 @@ let contadorAtencion = 0;
 let contadorRiesgo = 0;
 
 todosLosCultivos.forEach(cultivo => {
+    const estado = calcularEstado(cultivo); 
 
-    if (cultivo.estado === "saludable") {
+    if (calcularEstado(cultivo) === "saludable") {
         contadorSaludables++;
     }
-    else if (cultivo.estado === "atencion") {
+    else if (calcularEstado(cultivo) === "atencion") {
         contadorAtencion++;
     }
-    else if (cultivo.estado === "riesgo") {
+    else if (calcularEstado(cultivo) === "riesgo") {
         contadorRiesgo++;
     }
-
 });
 
 // Actualizar spans
@@ -44,7 +40,6 @@ document.getElementById("crops-total").textContent =
 
 
 
-
 //Script para el círculo del stat
 const circulo = document.querySelector('.circulo-progreso');
 
@@ -58,4 +53,16 @@ const observer = new IntersectionObserver((entries) => {
 
 observer.observe(document.querySelector('.problems-stat'));
 
+function combinarCultivos(cultivosJSON, cultivosLocal) {
+    const idsEnLocal = cultivosLocal.map(c => c.id);
 
+    const cultivosJSONFiltrados =
+        cultivosJSON.filter(
+            c => !idsEnLocal.includes(c.id)
+        );
+
+    return [
+        ...cultivosJSONFiltrados,
+        ...cultivosLocal
+    ];
+}

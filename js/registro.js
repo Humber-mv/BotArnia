@@ -198,7 +198,8 @@ formulario.addEventListener("submit", (e) => {
             tipoPlaga: tienePlaga.checked ? tipoPlaga.value : null,
             observaciones: tienePlaga.checked ? observaciones.value : null,
             activo: true,
-            estado: "saludable"
+            ultimaFechaRiego: fecha.value,
+            ultimaFechaCosecha: null
         };
 
         let cultivosGuardados = JSON.parse(localStorage.getItem("cultivos"));
@@ -215,23 +216,14 @@ formulario.addEventListener("submit", (e) => {
             JSON.stringify(cultivosGuardados)
         );
 
-        toastSuccess.classList.add("toast-visible");
-        mensajeToast.textContent= "Cultivo registrado"
-
-        setTimeout(() => {
-            toastSuccess.classList.remove("toast-visible");
-        }, 1500);
+        mostrarToast("Cultivo registrado")
+        
     }
 });  
 
 formulario.addEventListener("reset", () => {
 
-    toastSuccess.classList.add("toast-visible");
-    mensajeToast.textContent = "Formulario limpio";
-
-    setTimeout(() => {
-        toastSuccess.classList.remove("toast-visible");
-    }, 1500);
+    mostrarToast("Formulario limpio")
 
     generarVistaPrevia({
         nombre: "-----",
@@ -250,4 +242,14 @@ function formatearTexto(valor) {
 
     return valor.replaceAll("-", " ");
 }
+
+function mostrarToast(mensaje) {
+    toastSuccess.classList.add("toast-visible");
+    mensajeToast.textContent = mensaje;
+
+    setTimeout(() => {
+        toastSuccess.classList.remove("toast-visible");
+    }, 2000);
+}
+
 

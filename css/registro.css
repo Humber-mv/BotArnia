@@ -117,7 +117,7 @@
 }
 
 .toast-success.toast-visible::before{
-    animation: timeOut 1.5s linear 1 forwards;
+    animation: timeOut 2s linear 1 forwards;
 }
 
 
