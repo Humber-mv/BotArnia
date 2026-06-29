@@ -270,6 +270,8 @@ section {
 .problems-left {
     display: flex;
     flex-direction: column;
+    flex: 1 1 25rem;
+    min-width: 0;
 }
 
 .problems-left h2 {
@@ -297,8 +299,7 @@ section {
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 1.5625rem 0;
-    padding-left: 0.5rem;
-    width: 100%;       
+    padding-left: 0.5rem;  
     max-width: 25rem;
 }
 
@@ -362,8 +363,7 @@ section {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.875rem;
-    width: 100%;       
-    max-width: 39.375rem;
+    flex: 1 1 39.375rem;
     align-items: center;
 }
 
