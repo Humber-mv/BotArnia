@@ -1,133 +1,164 @@
-.footer-bottom{
-    display: flex;
-    background-color: #91ff3d;
-    height: 50px;
-    color: #081A36;
-    align-items: center;
-    font-weight: bold;
-    font-size: 14px;
-    flex-direction: column;
-    justify-content: center;
-}
+/* ===== CSS DE LA SECCIÓN DEL FOOTER CTA =====*/
 
-.copyright{
-    font-weight: normal;
-}
-
-.footer-cta{
+/* Contenedor del (CTA) */
+.footer-cta {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 48px 0;
+    padding: 3rem 0; 
+    flex-wrap: wrap; 
+    gap: 2rem;       
 }
 
-.cta-texto{
+.cta-texto {
     line-height: 1.5;
 }
-.cta-texto p{
+
+.cta-texto p {
     color: #91ff3d;
-    font-size: 17px;
+    font-size: 1.0625rem; 
 }
-.cta-texto h2{
+
+.cta-texto h2 {
     font-weight: bolder;
 }
-.cta-texto span{
+
+.cta-texto span {
     color: #91ff3d;
 }
 
-.whatsapp-button{
-    background: linear-gradient(90deg,rgba(255, 0, 128, 1) 13%, rgba(245, 116, 169, 1) 92%);;
-    padding: 12px 20px;
-    border-radius: 35px;
-    font-size: 14px;
-    font-weight:500;
+/* Botón de WhatsApp */
+.whatsapp-button {
+    background: linear-gradient(90deg, rgba(255, 0, 128, 1) 13%, rgba(245, 116, 169, 1) 92%);
+    padding: 0.75rem 1.25rem; 
+    border-radius: 2.1875rem;  
+    font-size: 0.875rem;      
+    font-weight: 500;
     color: #fff;
     transition: filter 0.3s ease, transform 0.2s ease;
 }
+
 .whatsapp-button:hover {
     filter: brightness(0.85);
     transform: scale(1.03);
 }
 
-.footer-body{
+/* ===== CSS DE LA SECCIÓN DEL FOOTER BODY =====*/
+
+/* Contenedor de las columnas del footer */
+.footer-body {
     display: flex;
     justify-content: space-between;
-    font-size: 14px;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 3.125rem;    
+    margin-bottom: 3.125rem; 
+    font-size: 0.875rem;     
+    flex-wrap: wrap;        
+    gap: 2rem;               
 }
-.footer-body a{
+
+.footer-body a {
     transition: color 0.3s;
 }
-.footer-body li a:hover{
+
+.footer-body li a:hover {
     color: #91ff3d;
 }
 
-.footer-body h3{
-    font-size: 16.5px;
+.footer-body h3 {
+    font-size: 1.03125rem; 
     color: #F5F0E8; 
-    margin-bottom: 12px;
+    margin-bottom: 0.75rem; 
 }
+
 .footer-body a,
 .footer-body p,
-.footer-body li{
+.footer-body li {
     color: rgba(245, 240, 232, 0.6);
     font-weight: 400;
     line-height: 2;
 }
-.footer-body p{
+
+.footer-body p {
     line-height: 1.5;
 }
 
+/* Columna de información de contacto */
 .footer-info li {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem; 
 }
 
-.footer-social ul{
+/* Columna de redes sociales */
+.footer-social ul {
     display: flex;
     gap: 2rem;
-    font-size: 17px;
+    font-size: 1.0625rem; 
 }
+
 .footer-social .insta:hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
+
 .footer-social .face:hover {
     color: #1877F2;
 }
+
 .footer-social .tiktok:hover {
     color: #69C9D0;
     text-shadow: 2px 0px 0px #EE1D52;
 }
 
-.footer-brand{
+/* Logo y texto en el footer*/
+.footer-brand {
     display: flex;
     gap: 0.75rem;
 }
-.footer-brand svg{
-    width: 28px;
-    height: 28px;
+
+.footer-brand svg {
+    width: 1.75rem;  
+    height: 1.75rem; 
     background-color: #91ff3d;
-    border-radius: 3.5px;
-    padding: 3px;
+    border-radius: 0.21875rem; 
+    padding: 0.1875rem;        
     color: #081A36;
 }
 
-.logo-text{
-    font-size: 16px;
+.logo-text {
+    font-size: 1rem; 
     font-weight: bold;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 4px;
+    margin-top: 0.25rem; 
 }
-.logo-bot{
+
+.logo-bot {
     color: white;
 }
-.logo-arnia{
+
+.logo-arnia {
     color: #91ff3d;
 }
 
+/* ===== CSS DE LA SECCIÓN DEL FOOTER BOTTOM =====*/
 
+/* Barra inferior de copyright */
+.footer-bottom {
+    display: flex;
+    background-color: #91ff3d;
+    min-height: 3.125rem; 
+    padding: 0.5rem 1rem;  
+    color: #081A36;
+    align-items: center;
+    font-weight: bold;
+    font-size: 0.875rem; 
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.copyright {
+    font-weight: normal;
+}

@@ -1,4 +1,6 @@
-/*CSS DEL NAVBAR*/
+/* ===== CSS DE LA SECCIÓN DEL NAVBAR =====*/
+
+/* Contenedor interno del nav */
 nav .container {
     display: flex;
     justify-content: space-between;
@@ -6,7 +8,8 @@ nav .container {
     width: 100%;
 }
 
-.nav-principal{
+/* Barra de navegación principal fija */
+.nav-principal {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -17,75 +20,95 @@ nav .container {
     top: 0;
     left: 0;
     width: 100%;
-    height: 60px;
+    height: 3.75rem; 
     z-index: 1000;
 }
 
-.nav-links{
+/* Lista de enlaces de navegación */
+.nav-links {
     display: flex;
     gap: 2rem;
     align-items: center;
 }
-.nav-links li a{
-    font-size: 14px;
+
+.nav-links li a {
+    font-size: 0.875rem; 
     font-family: 'Montserrat', sans-serif;
     font-weight: bold;
     color: rgba(245, 240, 232, 0.6);
     transition: color 0.3s;
 }
-.nav-links li a:hover{
+
+.nav-links li a:hover {
     color: #91ff3d;
 }
 
-/*CSS DEL LOGO*/
-.nav-logo{
+/* Botón del menú móvil (hamburguesa)*/
+.nav-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    color: #F5F0E8;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.nav-toggle:hover {
+    color: #91ff3d;
+}
+
+/* ===== CSS DE LA SECCIÓN DEL LOGO =====*/
+
+.nav-logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
 }
-.nav-logo svg{
-    width: 28px;
-    height: 28px;
+
+.nav-logo svg {
+    width: 1.75rem; 
+    height: 1.75rem; 
     background-color: #91ff3d;
-    border-radius: 3.5px;
-    padding: 3px;
+    border-radius: 0.21875rem; 
+    padding: 0.1875rem; 
     color: #081A36;
 }
 
-.logo-text{
-    font-size: 16px;
+.logo-text {
+    font-size: 1rem; 
     font-weight: bold;
-    font-family: 'Montserrat', sans-serif; ;
+    font-family: 'Montserrat', sans-serif;
 }
-.logo-bot{
+
+.logo-bot {
     color: white;
 }
-.logo-arnia{
+
+.logo-arnia {
     color: #91ff3d;
 }
 
+/* ===== CSS DE LA SECCIÓN DE BREADCRUMB =====*/
+
 .breadcrumb {
-    background: rgba(6, 20, 42, 0.75);
-    padding: 12px 0;
-}
-
-
-.breadcrumb{
     display: flex;
     align-items: center;
+    background: rgba(6, 20, 42, 0.75);
+    padding: 0.75rem 0; 
     font-size: 0.95rem;
-}
-
-.breadcrumb a::after {
-    content: "/";
-    margin: 8px 8px;
-    color: rgba(245, 240, 232, 0.25);
 }
 
 .breadcrumb a {
     color: rgba(245, 240, 232, 0.5);
     font-weight: 500;
     transition: color 0.2s;
+}
+
+.breadcrumb a::after {
+    content: "/";
+    margin: 0 0.5rem; 
+    color: rgba(245, 240, 232, 0.25);
 }
 
 .breadcrumb a:hover {

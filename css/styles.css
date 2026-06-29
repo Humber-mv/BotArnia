@@ -1,13 +1,9 @@
+/* ===== CSS DE CONFIGURACIÓN GENERAL Y VARIABLES =====*/
+
 :root {
     --font-titulo: 'Poppins', sans-serif;
     --font-cuerpo: 'Inter', sans-serif;
 }
-
-.container {
-    max-width: 1350px;
-    margin: auto;
-}
-
 
 * {
     padding: 0;
@@ -28,6 +24,8 @@ img {
     display: block;
 }
 
+/* ===== CSS DE ELEMENTOS BASE =====*/
+
 body {
     min-height: 20vh;
     background: linear-gradient(to bottom,
@@ -37,9 +35,18 @@ body {
     );
     font-family: var(--font-cuerpo);
     color: #F5F0E8;
-    padding-top: 60px;
+    padding-top: 3.75rem; 
 }
 
-h1,h2,h3,h4{
+h1, h2, h3, h4 {
     font-family: var(--font-titulo);
+}
+
+/* ===== CSS DEL CONTENEDOR PRINCIPAL =====*/
+
+.container {
+    width: 100%;
+    max-width: 84.375rem; 
+    margin: 0 auto;
+    padding: 0 1.25rem; 
 }

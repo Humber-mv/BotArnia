@@ -9,7 +9,7 @@
         "tipoPlaga": "",
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-14",
-        "ultimaFechaCosecha": "2026-06-10",
+        "ultimaFechaCosecha": null,
         "activo": true,
         "estado": "saludable"
     },
@@ -51,7 +51,7 @@
         "tipoPlaga": "",
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-15",
-        "ultimaFechaCosecha": "2026-06-08",
+        "ultimaFechaCosecha": null,
         "activo": true,
         "estado": "saludable"
     },
@@ -107,7 +107,7 @@
         "tipoPlaga": "",
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-15",
-        "ultimaFechaCosecha": "2026-06-12",
+        "ultimaFechaCosecha": null,
         "activo": true,
         "estado": "saludable"
     },
@@ -121,7 +121,7 @@
         "tipoPlaga": "",
         "observaciones": "",
         "ultimaFechaRiego": "2026-06-14",
-        "ultimaFechaCosecha": "2026-06-02",
+        "ultimaFechaCosecha": null,
         "activo": true,
         "estado": "saludable"
     },

@@ -12,28 +12,50 @@ function crearTarjetaCultivo(cultivo, diccionario) {
 
     const estado = calcularEstado(cultivo);
 
+    let ultimaFechaCosecha = cultivo.ultimaFechaCosecha
+
+    if(cultivo.ultimaFechaCosecha === null){
+        ultimaFechaCosecha= "No se ha cosechado"
+    }
+
     const tarjeta = document.createElement("article");
     tarjeta.classList.add("cultivo-card");
 
     tarjeta.innerHTML = /* html */ `
-        <div class="card-image">
-            <img src="${info.imagen}" alt="${cultivo.nombre}">
-            <span class="badge badge-${estado}">${formatearEstado(estado)}</span>
+    <div class="card-inner">
+        <div class="card-front">
+            <div class="card-image">
+                <img src="${info.imagen}" alt="${cultivo.nombre}">
+                <span class="badge badge-${estado}">${formatearEstado(estado)}</span>
+            </div>
+            <h3>${cultivo.nombre}</h3>
+            <p>${cultivo.categoria}</p>
+            <div class="data">
+                <p><i class="fa-solid fa-calendar"></i> Siembra: ${cultivo.fechaSiembra}</p>
+                <p><i class="fa-solid fa-droplet"></i> Riego: ${cultivo.frecuenciaRiego}</p>
+                <p><i class="fa-solid fa-clock"></i> Último riego: ${cultivo.ultimaFechaRiego}</p>
+                <p><i class="fa-solid fa-clock"></i> Última cosecha: ${ultimaFechaCosecha}</p>
+            </div>
+            <div class="actions">
+                <button class="btn-riego">Regar</button>
+                <button class="btn-cosecha">Cosechar</button>
+                <button class="btn-eliminar">Eliminar</button>
+                <button class="btn-detalle">Detalle</button>
+            </div>
         </div>
-        <h3>${cultivo.nombre}</h3>
-        <p>${cultivo.categoria}</p>
-        <div class="data">
-            <p><i class="fa-solid fa-calendar"></i> Siembra: ${cultivo.fechaSiembra}</p>
-            <p><i class="fa-solid fa-droplet"></i> Riego: ${cultivo.frecuenciaRiego}</p>
-            <p><i class="fa-solid fa-clock"></i> Último riego: ${cultivo.ultimaFechaRiego}</p>
+
+        <div class="card-back">
+            <h3>${cultivo.nombre}</h3>
+            <p class="back-descripcion">${info.descripcion}</p>
+            <div class="back-motivo">
+                <h4>¿Por qué está en este estado?</h4>
+                <p>${generarMotivoEstado(cultivo, estado)}</p>
+            </div>
+            <button class="btn-volver">Volver</button>
         </div>
-        <div class="actions">
-            <button class="btn-riego">Regar</button>
-            <button class="btn-cosecha">Cosechar</button>
-            <button class="btn-eliminar">Eliminar</button>
-            <button class="btn-detalle">Detalle</button>
-        </div>
-    `;
+
+    </div>
+`;
 
     tarjeta.querySelector(".btn-riego").addEventListener("click", () => {
         marcarComoRegado(cultivo.id);
@@ -50,8 +72,34 @@ function crearTarjetaCultivo(cultivo, diccionario) {
         mostrarToast("Cultivo eliminado");
     });
 
-
+    tarjeta.querySelector(".btn-detalle").addEventListener("click", () => {
+        tarjeta.classList.add("flipped");
+    });
+    
+    tarjeta.querySelector(".btn-volver").addEventListener("click", () => {
+        tarjeta.classList.remove("flipped");
+    });
+    
     return tarjeta;
+}
+
+
+function generarMotivoEstado(cultivo, estado) {
+    if (cultivo.tienePlaga) {
+        return `Este cultivo tiene plaga activa (${cultivo.tipoPlaga}). ${cultivo.observaciones || ''}`;
+    }
+
+    const hoy = new Date();
+    const ultimoRiego = new Date(cultivo.ultimaFechaRiego);
+    const diasSinRiego = Math.floor((hoy - ultimoRiego) / (1000 * 60 * 60 * 24));
+
+    if (estado === "riesgo") {
+        return `Lleva ${diasSinRiego} días sin riego, muy por encima de lo recomendado.`;
+    }
+    if (estado === "atencion") {
+        return `Lleva ${diasSinRiego} días sin riego, ya se pasó del tiempo ideal.`;
+    }
+    return "El cultivo está al día con su riego y sin problemas detectados.";
 }
 
 
