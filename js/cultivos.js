@@ -1,172 +1,156 @@
-
+// Variables globales de estado
 let todosLosCultivos = [];
 let diccionarioGlobal = {};
+let texto = "";
+let categoriaSeleccionada = "todas";
+let estadoSeleccionado = "todos";
 
-const toastSuccess = document.querySelector(".toast-success")
-let mensajeToast = document.querySelector(".toast-message")
-const botonesCategoria = document.querySelectorAll(".btn-categoria")
-const botonesEstado = document.querySelectorAll(".btn-estado")
-let texto = ""
-let categoriaSeleccionada = "todas"
-let estadoSeleccionado = "todos"
+// Selectores DOM generales
+const toastSuccess = document.querySelector(".toast-success");
+const mensajeToast = document.querySelector(".toast-message");
+const botonesCategoria = document.querySelectorAll(".btn-categoria");
+const botonesEstado = document.querySelectorAll(".btn-estado");
+const botonLimpiar = document.querySelector(".btn-limpiar-filtro");
+const filtroBusqueda = document.getElementById("search-cultivo");
+
+// Selectores de botones de filtro específicos
+const todosCategoria = document.querySelector(".all-category");
+const vegetalesCategoria = document.querySelector(".vegetable");
+const frutasCategoria = document.querySelector(".fruits");
+const hierbasCategoria = document.querySelector(".herbs");
+const cerealesCategoria = document.querySelector(".cereals");
+const ornamentalesCategoria = document.querySelector(".ornamentals");
+
+const todosEstado = document.querySelector(".all-state");
+const saludableEstado = document.querySelector(".healthy");
+const atencionEstado = document.querySelector(".attention");
+const riesgoEstado = document.querySelector(".risk");
 
 
 function quitarBordeCategoria() {
-        botonesCategoria.forEach(boton => {
-            boton.classList.remove("click-boton");
-        });
-    }
+    botonesCategoria.forEach(boton => {
+        boton.classList.remove("click-boton");
+    });
+}
 
 function quitarBordeEstado() {
-        botonesEstado.forEach(boton => {
-            boton.classList.remove("click-boton");
-            boton.classList.remove("click-boton-healthy");
-            boton.classList.remove("click-boton-attention");
-            boton.classList.remove("click-boton-risk");
-        });
-    }
-
+    botonesEstado.forEach(boton => {
+        boton.classList.remove("click-boton");
+        boton.classList.remove("click-boton-healthy");
+        boton.classList.remove("click-boton-attention");
+        boton.classList.remove("click-boton-risk");
+    });
+}
 
 function aplicarFiltros() {
-        const nuevoArreglo = todosLosCultivos.filter(cultivo => {
+    const nuevoArreglo = todosLosCultivos.filter(cultivo => {
+        const nombreCultivo = cultivo.nombre.toLowerCase();
+        const cumpleTexto = nombreCultivo.startsWith(texto);
+        const cumpleCategoria = categoriaSeleccionada === "todas" || cultivo.categoria === categoriaSeleccionada;
+        const cumpleEstado = estadoSeleccionado === "todos" || calcularEstado(cultivo) === estadoSeleccionado;
 
-            const nombreCultivo = cultivo.nombre.toLowerCase();
-            const cumpleTexto = nombreCultivo.startsWith(texto);
-            const cumpleCategoria = categoriaSeleccionada === "todas" || cultivo.categoria === categoriaSeleccionada;
-            const cumpleEstado = estadoSeleccionado === "todos" || calcularEstado(cultivo) === estadoSeleccionado;
+        return cumpleTexto && cumpleCategoria && cumpleEstado;
+    });
+    reenderizarCultivos(nuevoArreglo, diccionarioGlobal);
+}
 
-            return ( cumpleTexto && cumpleCategoria && cumpleEstado );
-        });
-        reenderizarCultivos(nuevoArreglo, diccionarioGlobal);
-    }
-    
-    function seleccionarCategoria(valor, boton) {
-        categoriaSeleccionada = valor;
-        quitarBordeCategoria();
+function seleccionarCategoria(valor, boton) {
+    categoriaSeleccionada = valor;
+    quitarBordeCategoria();
+    if (boton) {
         boton.classList.add("click-boton");
-
-        if(valor === ""){ 
-            boton.classList.remove("click-boton"); 
-        } 
-
-        aplicarFiltros();
     }
+    aplicarFiltros();
+}
 
-    function seleccionarEstado(valor, boton) {
-        estadoSeleccionado = valor;
-        quitarBordeEstado()
-        if(valor === "saludable"){ 
-            boton.classList.add("click-boton-healthy"); 
-        } 
-        else if(valor === "atencion"){ 
-            boton.classList.add("click-boton-attention"); 
-        } 
-        else if(valor === "riesgo"){ 
-            boton.classList.add("click-boton-risk"); 
-        } 
-        else if(valor === ""){ 
-            boton.classList.remove("click-boton"); 
-        } 
-        else{ 
-            boton.classList.add("click-boton"); 
+function seleccionarEstado(valor, boton) {
+    estadoSeleccionado = valor;
+    quitarBordeEstado();
+    
+    if (boton) {
+        if (valor === "saludable") {
+            boton.classList.add("click-boton-healthy");
+        } else if (valor === "atencion") {
+            boton.classList.add("click-boton-attention");
+        } else if (valor === "riesgo") {
+            boton.classList.add("click-boton-risk");
+        } else {
+            boton.classList.add("click-boton");
         }
-        aplicarFiltros();
     }
-
-
-
-const botonLimpiar = document.querySelector(".btn-limpiar-filtro")
+    aplicarFiltros();
+}
 
 function limpiarFiltros() {
-    const todosCategoria = document.querySelector(".all-category");
-    const todosEstado = document.querySelector(".all-state");
-    const filtroBusqueda = document.getElementById("search-cultivo");
-
-    
     if (filtroBusqueda) {
         filtroBusqueda.value = "";
     }
     texto = "";
 
-    
     if (todosCategoria) {
         seleccionarCategoria("todas", todosCategoria);
     }
-    
     if (todosEstado) {
         seleccionarEstado("todos", todosEstado);
     }
 }
 
-
-
-botonLimpiar.addEventListener("click", ()=>{
-    limpiarFiltros()
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function crearTarjetaCultivo(cultivo, diccionario) {
     const info = diccionario.cultivos[cultivo.nombre.toLowerCase()] ||
-        diccionario.categorias[cultivo.categoria.toLowerCase()];
+    diccionario.categorias[cultivo.categoria.toLowerCase()];
 
     const estado = calcularEstado(cultivo);
-
-    let ultimaFechaCosecha = cultivo.ultimaFechaCosecha
-
-    if(cultivo.ultimaFechaCosecha === null){
-        ultimaFechaCosecha= "No se ha cosechado"
-    }
+    const reqRiego = requiereRiego(cultivo);
+    const reqCosecha = requiereCosecha(cultivo, diccionario);
+    let ultimaFechaCosecha = cultivo.ultimaFechaCosecha || "No se ha cosechado";
 
     const tarjeta = document.createElement("article");
     tarjeta.classList.add("cultivo-card");
 
     tarjeta.innerHTML = /* html */ `
-    <div class="card-inner">
-        <div class="card-front">
-            <div class="card-image">
-                <img src="${info.imagen}" alt="${cultivo.nombre}">
-                <span class="badge badge-${estado}">${formatearEstado(estado)}</span>
+        <div class="card-inner">
+            <div class="card-front">
+                <div class="card-image">
+                    <img src="${info.imagen}" alt="${cultivo.nombre}">
+                    <span class="badge badge-${estado}">${formatearEstado(estado)}</span>
+                    <div class="alert-icons">
+                        ${reqRiego ? '<span class="alert-icon alert-riego" title="Necesita riego"><i class="fa-solid fa-droplet"></i></span>' : ''}
+                        ${reqCosecha ? '<span class="alert-icon alert-cosecha" title="Listo para cosechar"><i class="fa-solid fa-wheat-awn"></i></span>' : ''}
+                    </div>
+                </div>
+                <h3>${cultivo.nombre}</h3>
+                <p>${cultivo.categoria}</p>
+                <div class="data">
+                    <p><i class="fa-solid fa-calendar"></i> Siembra: ${cultivo.fechaSiembra}</p>
+                    <p><i class="fa-solid fa-droplet"></i> Riego: ${cultivo.frecuenciaRiego}</p>
+                    <p><i class="fa-solid fa-clock"></i> Último riego: ${cultivo.ultimaFechaRiego}</p>
+                    <p><i class="fa-solid fa-clock"></i> Última cosecha: ${ultimaFechaCosecha}</p>
+                </div>
+                <div class="actions">
+                    <button class="btn-riego">Regar</button>
+                    <button class="btn-cosecha">Cosechar</button>
+                    <button class="btn-eliminar">Eliminar</button>
+                    <button class="btn-detalle">Detalle</button>
+                </div>
             </div>
-            <h3>${cultivo.nombre}</h3>
-            <p>${cultivo.categoria}</p>
-            <div class="data">
-                <p><i class="fa-solid fa-calendar"></i> Siembra: ${cultivo.fechaSiembra}</p>
-                <p><i class="fa-solid fa-droplet"></i> Riego: ${cultivo.frecuenciaRiego}</p>
-                <p><i class="fa-solid fa-clock"></i> Último riego: ${cultivo.ultimaFechaRiego}</p>
-                <p><i class="fa-solid fa-clock"></i> Última cosecha: ${ultimaFechaCosecha}</p>
-            </div>
-            <div class="actions">
-                <button class="btn-riego">Regar</button>
-                <button class="btn-cosecha">Cosechar</button>
-                <button class="btn-eliminar">Eliminar</button>
-                <button class="btn-detalle">Detalle</button>
+
+            <div class="card-back">
+                <h3>${cultivo.nombre}</h3>
+                <p class="back-descripcion">${info.descripcion}</p>
+                <div class="back-motivo">
+                    <h4>¿Por qué está en este estado?</h4>
+                    <p>${generarMotivoEstado(cultivo, estado)}</p>
+                </div>
+                ${reqCosecha ? `
+                <div class="back-cosecha-alert">
+                    <i class="fa-solid fa-wheat-awn"></i>
+                    <span>Este cultivo necesita ser cosechado</span>
+                </div>
+                ` : ''}
+                <button class="btn-volver">Volver</button>
             </div>
         </div>
-
-        <div class="card-back">
-            <h3>${cultivo.nombre}</h3>
-            <p class="back-descripcion">${info.descripcion}</p>
-            <div class="back-motivo">
-                <h4>¿Por qué está en este estado?</h4>
-                <p>${generarMotivoEstado(cultivo, estado)}</p>
-            </div>
-            <button class="btn-volver">Volver</button>
-        </div>
-
-    </div>
-`;
+    `;
 
     tarjeta.querySelector(".btn-riego").addEventListener("click", () => {
         marcarComoRegado(cultivo.id);
@@ -194,7 +178,6 @@ function crearTarjetaCultivo(cultivo, diccionario) {
     return tarjeta;
 }
 
-
 function generarMotivoEstado(cultivo, estado) {
     if (cultivo.tienePlaga) {
         return `Este cultivo tiene plaga activa (${cultivo.tipoPlaga}). ${cultivo.observaciones || ''}`;
@@ -213,11 +196,9 @@ function generarMotivoEstado(cultivo, estado) {
     return "El cultivo está al día con su riego y sin problemas detectados.";
 }
 
-
 function mostrarToast(mensaje) {
     toastSuccess.classList.add("toast-visible");
     mensajeToast.textContent = mensaje;
-
     setTimeout(() => {
         toastSuccess.classList.remove("toast-visible");
     }, 2000);
@@ -226,6 +207,7 @@ function mostrarToast(mensaje) {
 function reenderizarCultivos(listaCultivos, diccionario) {
     const contenedor = document.querySelector(".cultivos-list");
     const mensajeVacio = document.querySelector(".no-results-message");
+    
     contenedor.querySelectorAll(".cultivo-card").forEach(card => card.remove());
 
     if (listaCultivos.length === 0) {
@@ -235,13 +217,11 @@ function reenderizarCultivos(listaCultivos, diccionario) {
 
     mensajeVacio.classList.remove("visible");
 
-
     listaCultivos.forEach(cultivo => {
         const tarjeta = crearTarjetaCultivo(cultivo, diccionario);
         contenedor.appendChild(tarjeta);
     });
 }
-
 
 async function cargarCultivos() {
     try {
@@ -254,15 +234,13 @@ async function cargarCultivos() {
         diccionarioGlobal = await resDiccionario.json();
 
         const cultivosLocal = JSON.parse(localStorage.getItem('cultivos')) || [];
-
         todosLosCultivos = combinarCultivos(cultivosJSON, cultivosLocal);
 
         reenderizarCultivos(todosLosCultivos, diccionarioGlobal);
-
     } catch (error) {
         console.error('Error al cargar los cultivos:', error);
         const contenedor = document.querySelector('.cultivos-list');
-        contenedor.innerHTML = /* html */ `
+        contenedor.innerHTML = `
             <div class="no-results">
                 <h3>Ocurrió un error</h3>
                 <p>No se pudieron cargar los cultivos. Verificá tu conexión o recargá la página.</p>
@@ -271,85 +249,57 @@ async function cargarCultivos() {
     }
 }
 
-function combinarCultivos(cultivosJSON, cultivosLocal) {
-    const idsEnLocal = cultivosLocal.map(c => c.id);
-
-    const cultivosJSONFiltrados = cultivosJSON.filter(c => !idsEnLocal.includes(c.id));
-
-    return [...cultivosJSONFiltrados, ...cultivosLocal];
-}
-
-cargarCultivos()
-
-
 
 function busquedaCultivos() {
-    const filtroBusqueda = document.getElementById("search-cultivo")
-    const todosCategoria = document.querySelector(".all-category")
-    const vegetalesCategoria = document.querySelector(".vegetable")
-    const frutasCategoria = document.querySelector(".fruits")
-    const hierbasCategoria = document.querySelector(".herbs")
-    const cerealesCategoria = document.querySelector(".cereals")
-    const ornamentalesCategoria = document.querySelector(".ornamentals")
-    const todosEstado = document.querySelector(".all-state")
-    const saludableEstado = document.querySelector(".healthy")
-    const atencionEstado = document.querySelector(".attention")
-    const riesgoEstado = document.querySelector(".risk")
+    quitarBordeCategoria();
+    quitarBordeEstado();
     
-    
-    quitarBordeCategoria()
-    quitarBordeEstado()
-    
-    
+    if (todosCategoria) {
+        todosCategoria.classList.add("click-boton");
+    }
+    if (todosEstado) {
+        todosEstado.classList.add("click-boton");
+    }
 
-    filtroBusqueda.addEventListener("input", () => {
-        texto = filtroBusqueda.value.toLowerCase().trim();
-        aplicarFiltros();
-    });
+    if (filtroBusqueda) {
+        filtroBusqueda.addEventListener("input", () => {
+            texto = filtroBusqueda.value.toLowerCase().trim();
+            aplicarFiltros();
+        });
+    }
 
-    vegetalesCategoria.addEventListener("click", () => {
-        seleccionarCategoria("vegetal", vegetalesCategoria)
-    });
+    if (vegetalesCategoria) {
+        vegetalesCategoria.addEventListener("click", () => seleccionarCategoria("vegetal", vegetalesCategoria));
+    }
+    if (frutasCategoria) {
+        frutasCategoria.addEventListener("click", () => seleccionarCategoria("frutal", frutasCategoria));
+    }
+    if (hierbasCategoria) {
+        hierbasCategoria.addEventListener("click", () => seleccionarCategoria("hierba", hierbasCategoria));
+    }
+    if (cerealesCategoria) {
+        cerealesCategoria.addEventListener("click", () => seleccionarCategoria("cereal", cerealesCategoria));
+    }
+    if (ornamentalesCategoria) {
+        ornamentalesCategoria.addEventListener("click", () => seleccionarCategoria("ornamental", ornamentalesCategoria));
+    }
+    if (todosCategoria) {
+        todosCategoria.addEventListener("click", () => seleccionarCategoria("todas", todosCategoria));
+    }
 
-    frutasCategoria.addEventListener("click", () => {
-        seleccionarCategoria("frutal", frutasCategoria)
-    });
-
-    hierbasCategoria.addEventListener("click", () => {
-        seleccionarCategoria("hierba", hierbasCategoria)
-    });
-
-    cerealesCategoria.addEventListener("click", () => {
-        seleccionarCategoria("cereal", cerealesCategoria)
-    });
-
-    ornamentalesCategoria.addEventListener("click", () => {
-        seleccionarCategoria("ornamental", ornamentalesCategoria)
-    });
-
-    todosCategoria.addEventListener("click", () => {
-        seleccionarCategoria("todas", todosCategoria)
-    });
-
-    saludableEstado.addEventListener("click", () => {
-        seleccionarEstado("saludable", saludableEstado)
-    });
-
-    atencionEstado.addEventListener("click", () => {
-        seleccionarEstado("atencion", atencionEstado)
-    });
-
-    riesgoEstado.addEventListener("click", () => {
-        seleccionarEstado("riesgo", riesgoEstado)
-    });
-
-    todosEstado.addEventListener("click", () => {
-        seleccionarEstado("todos", todosEstado)
-    });
+    if (saludableEstado) {
+        saludableEstado.addEventListener("click", () => seleccionarEstado("saludable", saludableEstado));
+    }
+    if (atencionEstado) {
+        atencionEstado.addEventListener("click", () => seleccionarEstado("atencion", atencionEstado));
+    }
+    if (riesgoEstado) {
+        riesgoEstado.addEventListener("click", () => seleccionarEstado("riesgo", riesgoEstado));
+    }
+    if (todosEstado) {
+        todosEstado.addEventListener("click", () => seleccionarEstado("todos", todosEstado));
+    }
 }
-
-busquedaCultivos()
-
 
 function formatearEstado(estado) {
     const textos = {
@@ -361,36 +311,16 @@ function formatearEstado(estado) {
 }
 
 function eliminarCultivo(id) {
+    todosLosCultivos = todosLosCultivos.filter(cultivo => cultivo.id !== id);
+    let cultivosLocal = JSON.parse(localStorage.getItem("cultivos")) || [];
+    cultivosLocal = cultivosLocal.filter(cultivo => cultivo.id !== id);
 
-    todosLosCultivos = todosLosCultivos.filter(
-        cultivo => cultivo.id !== id
-    );
-
-    let cultivosLocal =
-        JSON.parse(localStorage.getItem("cultivos")) || [];
-
-    cultivosLocal = cultivosLocal.filter(
-        cultivo => cultivo.id !== id
-    );
-
-    localStorage.setItem(
-        "cultivos",
-        JSON.stringify(cultivosLocal)
-    );
-
-    reenderizarCultivos(
-        todosLosCultivos,
-        diccionarioGlobal
-    );
+    localStorage.setItem("cultivos", JSON.stringify(cultivosLocal));
+    reenderizarCultivos(todosLosCultivos, diccionarioGlobal);
 }
 
-
-
-
-
-
-
-
-
-
-
+if (botonLimpiar) {
+    botonLimpiar.addEventListener("click", limpiarFiltros);
+}
+busquedaCultivos();
+cargarCultivos();

@@ -1,41 +1,36 @@
-const tienePlaga = document.getElementById("plaga")
-const plagaFields = document.getElementById("plaga-fields")
-const nombre = document.getElementById("nombre")
-const error = document.getElementById("nombre-error")
-const botonRegistrar = document.querySelector(".registrar")
 const formulario = document.querySelector(".crop-form");
+const nombre = document.getElementById("nombre");
+const categoria = document.getElementById("categoria");
+const fecha = document.getElementById("fecha");
+const frecuenciaRiego = document.getElementById("frecuencia-riego");
+const tienePlaga = document.getElementById("plaga");
+const tipoPlaga = document.getElementById("tipo-plaga");
 const observaciones = document.getElementById("observaciones");
+const plagaFields = document.getElementById("plaga-fields");
 
-const tipoPlaga = document.getElementById("tipo-plaga")
-const tipoPlagaError = document.getElementById("tipoPlaga-error")
-const fecha = document.getElementById("fecha")
-const categoriaError = document.getElementById("categoria-error")
-const categoria = document.getElementById("categoria")
-const frecuenciaRiego = document.getElementById("frecuencia-riego")
-const frecuenciRiegoError = document.getElementById("frecuenciaRiego-error")
+const error = document.getElementById("nombre-error");
+const categoriaError = document.getElementById("categoria-error");
+const frecuenciRiegoError = document.getElementById("frecuenciaRiego-error");
+const tipoPlagaError = document.getElementById("tipoPlaga-error");
 
-const toastSuccess = document.querySelector(".toast-success")
+const botonRegistrar = document.querySelector(".registrar");
+const toastSuccess = document.querySelector(".toast-success");
+const mensajeToast = document.querySelector(".toast-message");
+const vistaPrevia = document.querySelector(".crop-preview");
 
-const vistaPrevia = document.querySelector(".crop-preview")
-
-const limpiar = document.querySelector(".limpiar")
-let mensajeToast = document.querySelector(".toast-message")
-
-
+/* HTML para la vista previa de la tarjeta de cultivo*/
 function generarVistaPrevia(cultivo) {
-
-    let tienePlaga = "No";
-    let tipoPlaga = "-----";
-    let observaciones = "-----";
+    let tienePlagaTexto = "No";
+    let tipoPlagaTexto = "-----";
+    let observacionesTexto = "-----";
     
     if (cultivo.tienePlaga) {
-        tienePlaga = "Sí";
-        tipoPlaga = cultivo.tipoPlaga || "-----";
-        observaciones = cultivo.observaciones || "-----";
+        tienePlagaTexto = "Sí";
+        tipoPlagaTexto = cultivo.tipoPlaga || "-----";
+        observacionesTexto = cultivo.observaciones || "-----";
     }
 
-    vistaPrevia.innerHTML = /* html */ 
-    `
+    vistaPrevia.innerHTML = /* html */ `
         <div class="preview-image">
             <img src="assets/images/plant.jpg" alt="Imagen ilustrativa de cultivo" />
         </div>
@@ -58,25 +53,25 @@ function generarVistaPrevia(cultivo) {
                 </div>
                 <div class="group-info">
                     <p>¿Tiene plaga?</p>
-                    <h4>${tienePlaga}</h4>
+                    <h4>${tienePlagaTexto}</h4>
                 </div>
             </div>
             <div class="row-info">
                 <div class="group-info">
                     <p>Tipo de plaga</p>
-                    <h4>${tipoPlaga}</h4>
+                    <h4>${tipoPlagaTexto}</h4>
                 </div>
                 <div class="group-info">
                     <p>Observaciones</p>
-                    <h4>${observaciones}</h4>
+                    <h4>${observacionesTexto}</h4>
                 </div>
             </div>
         </div>
-    `
+    `;
 }
 
-function actualizarVistaPrevia(){
-
+/* Agarrar valores de los inputs del form y actualizar la vista previa. */
+function actualizarVistaPrevia() {
     const cultivo = {
         nombre: nombre.value || "-----",
         categoria: categoria.value || "-----",
@@ -86,69 +81,69 @@ function actualizarVistaPrevia(){
         tipoPlaga: tipoPlaga.value || "-----",
         observaciones: observaciones.value || "-----"
     };
-
     generarVistaPrevia(cultivo);
-
 }
 
+function formatearTexto(valor) {
+    if (valor === "-----") return valor;
+    return valor.replaceAll("-", " ");
+}
 
+function mostrarToast(mensaje) {
+    toastSuccess.classList.add("toast-visible");
+    mensajeToast.textContent = mensaje;
+    setTimeout(() => {
+        toastSuccess.classList.remove("toast-visible");
+    }, 2000);
+}
+
+// Listeners para la actualización en tiempo real de la vista previa
 nombre.addEventListener("input", actualizarVistaPrevia);
-
 categoria.addEventListener("change", actualizarVistaPrevia);
-
 fecha.addEventListener("change", actualizarVistaPrevia);
-
 frecuenciaRiego.addEventListener("change", actualizarVistaPrevia);
-
-tienePlaga.addEventListener("change", actualizarVistaPrevia);
-
 tipoPlaga.addEventListener("change", actualizarVistaPrevia);
-
 observaciones.addEventListener("input", actualizarVistaPrevia);
 
-tienePlaga.addEventListener("change",()=>{
-    if(tienePlaga.checked){
-        plagaFields.classList.add("visible")
+// Listener para el despliegue del contendor de campos de plaga
+tienePlaga.addEventListener("change", () => {
+    actualizarVistaPrevia();
+    if (tienePlaga.checked) {
+        plagaFields.classList.add("visible");
         tipoPlaga.required = true;
-    }
-    else{
-        plagaFields.classList.remove("visible")
+    } else {
+        plagaFields.classList.remove("visible");
         tipoPlaga.required = false;
     }
 });
 
-nombre.addEventListener("input",()=>{
-    if(nombre.value.length<=2){
-        error.textContent = "Debe tener al menos 3 caracteres"
-        error.classList.add("error")
-        nombre.style.borderColor = "red"
-        
-        botonRegistrar.disabled = true
-        botonRegistrar.classList.add("boton-registrar-error")
+// Validaciones en tiempo real y formatos visuales de error
+nombre.addEventListener("input", () => {
+    if (nombre.value.length <= 2) {
+        error.textContent = "Debe tener al menos 3 caracteres";
+        error.classList.add("error");
+        nombre.style.borderColor = "red";
+        botonRegistrar.disabled = true;
+        botonRegistrar.classList.add("boton-registrar-error");
+    } else {
+        error.textContent = "";
+        error.classList.remove("error");
+        nombre.style.borderColor = "#91ff3d";
+        botonRegistrar.disabled = false;
+        botonRegistrar.classList.remove("boton-registrar-error");
     }
-    else{
-        error.textContent = ""
-        error.classList.remove("error")
-        nombre.style.borderColor = "#91ff3d"
-
-        botonRegistrar.disabled = false
-        botonRegistrar.classList.remove("boton-registrar-error")
-    }
-})
-
-
-
+});
 
 categoria.addEventListener("change", () => {
     if (categoria.value === "") {
         categoriaError.textContent = "Debe seleccionar una categoría";
         categoriaError.classList.add("error");
-        categoria.style.borderColor = "red"
+        categoria.style.borderColor = "red";
     } else {
         categoriaError.textContent = "";
         categoriaError.classList.remove("error");
         categoria.classList.remove("input-error");
-        categoria.style.borderColor = "#91ff3d" 
+        categoria.style.borderColor = "#91ff3d";
     }
 });
 
@@ -156,11 +151,11 @@ frecuenciaRiego.addEventListener("change", () => {
     if (frecuenciaRiego.value === "") {
         frecuenciRiegoError.textContent = "Debe seleccionar una frecuencia de riego";
         frecuenciRiegoError.classList.add("error");
-        frecuenciaRiego.style.borderColor = "red"
+        frecuenciaRiego.style.borderColor = "red";
     } else {
         frecuenciRiegoError.textContent = "";
         frecuenciRiegoError.classList.remove("error");
-        frecuenciaRiego.style.borderColor = "#91ff3d" 
+        frecuenciaRiego.style.borderColor = "#91ff3d";
     }
 });
 
@@ -168,26 +163,25 @@ tipoPlaga.addEventListener("change", () => {
     if (tipoPlaga.value === "") {
         tipoPlagaError.textContent = "Debe seleccionar un tipo de plaga";
         tipoPlagaError.classList.add("error");
-        tipoPlaga.style.borderColor = "red"
+        tipoPlaga.style.borderColor = "red";
     } else {
         tipoPlagaError.textContent = "";
         tipoPlagaError.classList.remove("error");
-        tipoPlaga.style.borderColor = "#91ff3d" 
+        tipoPlaga.style.borderColor = "#91ff3d";
     }
 });
 
 fecha.addEventListener("change", () => {
-    if (!(fecha.value === "")) {
-        fecha.style.borderColor = "#91ff3d"
-    } 
+    if (fecha.value !== "") {
+        fecha.style.borderColor = "#91ff3d";
+    }
 });
 
-
+// Procesamiento de envío y reinicio del formulario
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
 
     if (formulario.checkValidity()) {
-
         const nuevoCultivo = {
             id: Date.now(),
             nombre: nombre.value,
@@ -202,29 +196,16 @@ formulario.addEventListener("submit", (e) => {
             ultimaFechaCosecha: null
         };
 
-        let cultivosGuardados = JSON.parse(localStorage.getItem("cultivos"));
-
-        if (cultivosGuardados === null) {
-            cultivosGuardados = [];
-        }
-
+        const cultivosGuardados = JSON.parse(localStorage.getItem("cultivos")) || [];
         cultivosGuardados.push(nuevoCultivo);
+        localStorage.setItem("cultivos", JSON.stringify(cultivosGuardados));
 
-
-        localStorage.setItem(
-            "cultivos",
-            JSON.stringify(cultivosGuardados)
-        );
-
-        mostrarToast("Cultivo registrado")
-        
+        mostrarToast("Cultivo registrado");
     }
-});  
+});
 
 formulario.addEventListener("reset", () => {
-
-    mostrarToast("Formulario limpio")
-
+    mostrarToast("Formulario limpio");
     generarVistaPrevia({
         nombre: "-----",
         categoria: "-----",
@@ -234,22 +215,4 @@ formulario.addEventListener("reset", () => {
         tipoPlaga: "-----",
         observaciones: "-----"
     });
-
 });
-
-function formatearTexto(valor) {
-    if (valor === "-----") return valor;
-
-    return valor.replaceAll("-", " ");
-}
-
-function mostrarToast(mensaje) {
-    toastSuccess.classList.add("toast-visible");
-    mensajeToast.textContent = mensaje;
-
-    setTimeout(() => {
-        toastSuccess.classList.remove("toast-visible");
-    }, 2000);
-}
-
-

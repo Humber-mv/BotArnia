@@ -1,22 +1,37 @@
 {
     "categorias": {
         "vegetal": {
+            "diasMaduracion": 60,
+            "cosechaRecurrente": true,
+            "diasEntreCosechas": 5,
             "imagen": "assets/images/vegetables.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de vegetales. Procurá mantener una humedad constante en el suelo sin llegar al encharcamiento y revisá periódicamente su estado para identificar el momento adecuado de cosecha."
         },
         "frutal": {
+            "diasMaduracion": 180,
+            "cosechaRecurrente": true,
+            "diasEntreCosechas": 30,
             "imagen": "assets/images/fruits.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de frutales. Se recomienda realizar riegos regulares según las condiciones climáticas y observar el desarrollo de los frutos para cosecharlos cuando alcancen su madurez."
         },
         "hierba": {
+            "diasMaduracion": 30,
+            "cosechaRecurrente": true,
+            "diasEntreCosechas": 7,
             "imagen": "assets/images/herbals.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de hierbas. Generalmente prospera con riegos moderados y una buena exposición a la luz. Cosechar sus hojas de forma adecuada puede favorecer un crecimiento continuo."
         },
         "cereal": {
+            "diasMaduracion": 100,
+            "cosechaRecurrente": false,
+            "diasEntreCosechas": null,
             "imagen": "assets/images/cereals.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de cereales. Mantén un programa de riego acorde con su etapa de desarrollo y verificá el estado de las espigas o granos antes de realizar la cosecha."
         },
         "ornamental": {
+            "diasMaduracion": 90,
+            "cosechaRecurrente": true,
+            "diasEntreCosechas": 30,
             "imagen": "assets/images/ornamentals.jpg",
             "descripcion": "Este cultivo pertenece a la categoría de plantas ornamentales. Se recomienda mantener un riego equilibrado y retirar hojas o flores marchitas para favorecer su apariencia y desarrollo."
         }
