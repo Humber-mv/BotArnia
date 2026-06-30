@@ -437,3 +437,46 @@
     opacity: 1;
     visibility: visible;
 }
+
+/* ===== (MEDIA QUERY) =====*/
+
+@media (max-width: 768px) {
+    
+    .cultivos-header {
+        margin: 2rem 0;
+        gap: 1.5rem;
+    }
+    
+    .top-text h1 {
+        font-size: 2rem;
+    }
+    
+    .toolbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+    
+    .search-box input {
+        max-width: 100%; 
+    }
+    
+    .filter-cleaner button {
+        width: 100%;
+        text-align: center;
+        height: 2.75rem;
+    }
+    
+    .filters {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .category-filter button,
+    .health-filter button {
+        margin-top: 0.5rem;
+        margin-right: 0.25rem;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+    }
+}

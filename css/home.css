@@ -623,3 +623,87 @@ section {
 .work-together-content a {
     font-size: 1.125rem;
 }
+
+/* ===== (MEDIA QUERY) =====*/
+
+@media (max-width: 768px) {
+    /* Ajustes generales del Hero */
+    .hero-section {
+        text-align: center;
+        min-height: auto;
+        padding: 3rem 0;
+    }
+    
+    .text h1 {
+        font-size: 2.25rem;
+    }
+    
+    .hero-links {
+        justify-content: center;
+        gap: 1rem;
+    }
+    
+    .dash-metrics {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    
+    .solutions-header {
+        text-align: center;
+    }
+    
+    .solutions-header h2 {
+        font-size: 1.75rem;
+    }
+    
+    .features-grid {
+        justify-content: center;
+    }
+    
+    .problems-left {
+        text-align: center;
+        align-items: center;
+    }
+    
+    .problems-left h2 {
+        font-size: 1.75rem;
+    }
+    
+    .problems-stat {
+        margin: 1.5rem auto 0;
+    }
+    
+    .problems-cards {
+        grid-template-columns: 1fr; 
+        gap: 1rem;
+    }
+    
+    .problem-card {
+        min-height: auto;
+        padding: 1.25rem;
+    }
+    
+    .audience-top {
+        text-align: center;
+    }
+    
+    .audience-top h2 {
+        font-size: 1.75rem;
+    }
+    
+    .audience-cards {
+        gap: 1.5rem;
+    }
+    
+    .audience-card {
+        padding: 2rem 1.5rem;
+    }
+    
+    .work-together {
+        height: 50vh;
+    }
+    
+    .work-together-content h2 {
+        font-size: 2rem;
+    }
+}
